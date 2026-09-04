@@ -17,14 +17,19 @@
 
       <p class="text-[clamp(16px,1.4vw,18px)] leading-[1.55] text-[#495F73]"><?= e($h['sub']) ?></p>
 
-      <div class="flex flex-wrap items-center gap-3.5">
-        <a href="#contact" class="btn-primary">
+      <!-- Below 640px the pair shares one row: WhatsApp collapses to its icon
+           and the primary sits at its natural width, so the two never stack
+           and eat space above the fold. -->
+      <div class="flex flex-nowrap items-stretch gap-2.5 sm:flex-wrap sm:items-center sm:gap-3.5">
+        <a href="#contact"
+           class="btn-primary w-fit px-4 text-center sm:px-[26px]">
           Book a free consultation
-          <?= icon('arrow-right', 'w-[18px] h-[18px]', ['stroke-width' => '2.2']) ?>
+          <?= icon('arrow-right', 'w-[18px] h-[18px] shrink-0', ['stroke-width' => '2.2']) ?>
         </a>
-        <a href="<?= e(wa_url()) ?>" target="_blank" rel="noopener" class="btn-secondary">
-          <?= icon('chat', 'w-[18px] h-[18px]') ?>
-          WhatsApp us
+        <a href="<?= e(wa_url()) ?>" target="_blank" rel="noopener" aria-label="WhatsApp us"
+           class="btn-secondary w-[52px] shrink-0 px-0 sm:w-auto sm:px-[26px]">
+          <?= icon('chat', 'w-[18px] h-[18px] shrink-0') ?>
+          <span class="hidden sm:inline">WhatsApp us</span>
         </a>
       </div>
 

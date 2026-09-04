@@ -109,6 +109,7 @@
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
+  line-height: 1.25;
   box-shadow: 0 8px 20px -10px rgb(20 102 190 / 0.65);
   transition: background-color 150ms ease;
 
@@ -124,12 +125,15 @@
   justify-content: center;
   gap: 0.625rem;
   min-height: 52px;
-  padding: 1rem 1.625rem;
+  /* 1px less vertical padding than btn-primary so the border is absorbed and
+     both buttons come out the same height when they sit side by side. */
+  padding: calc(1rem - 1px) 1.625rem;
   border-radius: 0.5rem;
   background: #fff;
   color: var(--color-navy);
   font-weight: 600;
   font-size: 1rem;
+  line-height: 1.25;
   border: 1px solid var(--color-line-strong);
   transition: border-color 150ms ease;
 
