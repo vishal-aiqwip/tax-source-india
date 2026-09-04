@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FBFAF7; font-family: "Public Sans", sans-serif; color: #33475B; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    h1,h2,h3,.dsp { font-family: "Bricolage Grotesque","Public Sans",sans-serif; color: #0B1F33; margin: 0; letter-spacing: -0.02em; }
+    p { margin: 0; }
+    a { color: #0E7C5A; } a:hover { color: #0A5C43; }
+    .sec { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0E7C5A; }
+    .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: #7E8A95; }
+    .panel { background: #FFFFFF; border: 1px solid #E7E2D8; border-radius: 14px; padding: 28px; }
+    .spec { font-size: 13px; color: #7E8A95; }
+  </style>
+</helmet>
+
+<div style="width: 1100px; padding: 48px; display: flex; flex-direction: column; gap: 22px;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 26px; border-bottom: 1px solid #E7E2D8;">
+    <div class="sec">Tax Source India &middot; Design system</div>
+    <h1 style="font-size: 42px; font-weight: 800; line-height: 1.08;">Components</h1>
+    <p style="font-size: 16px; line-height: 1.6; color: #5C6E7F; max-width: 640px;">The parts the homepage is built from. Anything new should be assembled from these before a new pattern is invented.</p>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="panel" style="display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 4px;"><div class="sec">Actions</div><h2 style="font-size: 20px; font-weight: 700;">Buttons and links</h2></div>
+    <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; background: #0E7C5A; color: #FFFFFF; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 8px; min-height: 52px; box-shadow: 0 8px 20px -10px rgba(14,124,90,0.65);">Book a free consultation
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+      <div style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; color: #0B1F33; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 8px; min-height: 52px; border: 1px solid #D9D3C6;">WhatsApp us</div>
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #0E7C5A; color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 12px 20px; border-radius: 8px; min-height: 46px;">Book a free call</div>
+      <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #0E7C5A;">Get a quote
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7C5A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+    </div>
+    <div class="spec">Primary 52px tall / 16px 26px / radius 8. Nav variant 46px. One primary per screen region. Text link is 700 weight with a 16px arrow, never underlined.</div>
+  </div>
+
+  <!-- FORM -->
+  <div class="panel" style="display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 4px;"><div class="sec">Forms</div><h2 style="font-size: 20px; font-weight: 700;">Fields</h2></div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 7px;">
+        <div style="font-size: 13.5px; font-weight: 600; color: #33475B;">Your name</div>
+        <div style="background: #FFFFFF; border: 1px solid #DFD9CD; border-radius: 8px; height: 48px; display: flex; align-items: center; padding: 0 14px; font-size: 15px; color: #78848F;">Full name</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 7px;">
+        <div style="font-size: 13.5px; font-weight: 600; color: #33475B;">Filled</div>
+        <div style="background: #FFFFFF; border: 1px solid #DFD9CD; border-radius: 8px; height: 48px; display: flex; align-items: center; padding: 0 14px; font-size: 15px; color: #22364A;">Vishal Maurya</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 7px;">
+        <div style="font-size: 13.5px; font-weight: 600; color: #33475B;">Select</div>
+        <div style="background: #FFFFFF; border: 1px solid #DFD9CD; border-radius: 8px; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 15px; color: #22364A;">Income tax return filing
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7E8A95" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div>
+      </div>
+    </div>
+    <div class="spec">48px tall, radius 8, border #DFD9CD on white. Label 13.5/600 above with a 7px gap. Placeholder #78848F &mdash; the lightest grey that still clears AA on white.</div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="panel" style="display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 4px;"><div class="sec">Status</div><h2 style="font-size: 20px; font-weight: 700;">Filing states and chips</h2></div>
+    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+      <div style="font-size: 12px; font-weight: 700; color: #0E7C5A; background: #E9F5F0; padding: 6px 11px; border-radius: 6px;">Filed</div>
+      <div style="font-size: 12px; font-weight: 700; color: #B07A0C; background: #FDF4E3; padding: 6px 11px; border-radius: 6px;">In review</div>
+      <div style="font-size: 12px; font-weight: 700; color: #56697C; background: #F1F4F7; padding: 6px 11px; border-radius: 6px;">Upcoming</div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #E9F5F0; border-radius: 100px; padding: 6px 12px;"><span style="width: 7px; height: 7px; border-radius: 100px; background: #0E7C5A;"></span><span style="font-size: 12px; font-weight: 700; color: #0E7C5A;">All on track</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #E0DACD; border-radius: 100px; padding: 8px 16px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+        <span style="font-size: 14px; font-weight: 600; color: #0B1F33;">[4.X] on Google</span></div>
+    </div>
+    <div class="spec">Chips are 12/700 in radius-6 tint blocks. Colour carries meaning here and nowhere else.</div>
+  </div>
+
+  <!-- BLOCKS -->
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px;">
+
+    <div class="panel" style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;"><div class="sec">Block</div><h2 style="font-size: 20px; font-weight: 700;">Stat tile</h2></div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); border-top: 1px solid #E6E0D4;">
+        <div style="padding: 26px 24px 26px 0; display: flex; flex-direction: column; gap: 6px;">
+          <div class="dsp" style="font-size: 34px; font-weight: 800;">[X,000]+</div>
+          <div style="font-size: 14.5px; color: #66788A;">Returns filed</div>
+        </div>
+        <div style="padding: 26px 0 26px 24px; border-left: 1px solid #E6E0D4; display: flex; flex-direction: column; gap: 6px;">
+          <div class="dsp" style="font-size: 34px; font-weight: 800;">CA &middot; CS</div>
+          <div style="font-size: 14.5px; color: #66788A;">Certified team</div>
+        </div>
+      </div>
+      <div class="spec">Divided by 1px rules, never boxed. Number 34/800 display, label 14.5 muted.</div>
+    </div>
+
+    <div class="panel" style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;"><div class="sec">Block</div><h2 style="font-size: 20px; font-weight: 700;">Service row</h2></div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #F0ECE3;"><span style="font-size: 15.5px; font-weight: 500; color: #22364A;">GST registration &amp; management</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4BFC9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #F0ECE3;"><span style="font-size: 15.5px; font-weight: 500; color: #22364A;">Audit defence &amp; audit services</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4BFC9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0;"><span style="font-size: 15.5px; font-weight: 500; color: #22364A;">Financial planning</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4BFC9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+      </div>
+      <div class="spec">13px vertical padding, hairline #F0ECE3 between, no rule on the last row.</div>
+    </div>
+
+  </div>
+
+  <!-- CARDS -->
+  <div class="panel" style="display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 4px;"><div class="sec">Cards</div><h2 style="font-size: 20px; font-weight: 700;">Light, inverted, and photo</h2></div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px;">
+
+      <div style="background: #FBFAF7; border: 1px solid #E7E2D8; border-radius: 14px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="width: 48px; height: 48px; border-radius: 11px; background: #E9F5F0; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7C5A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <h3 style="font-size: 19px; font-weight: 700;">Salaried filers</h3>
+        <p style="font-size: 14.5px; line-height: 1.6; color: #5C6E7F;">Form 16 to filed return, with every deduction claimed.</p>
+      </div>
+
+      <div style="background: #0B1F33; border: 1px solid #0B1F33; border-radius: 14px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="width: 48px; height: 48px; border-radius: 11px; background: #16324B; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3FD39B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path></svg>
+        </div>
+        <h3 style="font-size: 19px; font-weight: 700; color: #FFFFFF;">Businesses on GST</h3>
+        <p style="font-size: 14.5px; line-height: 1.6; color: #A5B7C7;">Returns run as a routine, not a scramble.</p>
+      </div>
+
+      <div style="position: relative; border-radius: 14px; overflow: hidden; min-height: 186px; background: #33475B;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(135deg, #46586B 0%, #22364A 100%);"></div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 16px 20px; background: linear-gradient(180deg, rgba(11,31,51,0) 0%, rgba(11,31,51,0.82) 100%);">
+          <div style="font-size: 15px; font-weight: 700; color: #FFFFFF;">Caption over photo</div>
+          <div style="font-size: 13.5px; color: #C3D0DB; margin-top: 2px;">Second line, 13.5 on #C3D0DB</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="spec">Radius 14, border #E7E2D8, padding 26&ndash;30. Inverted cards swap to #0B1F33 with #16324B icon tiles and mint icons. Photo captions use a transparent-to-#0B1F33 gradient at 82%, never a flat bar.</div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

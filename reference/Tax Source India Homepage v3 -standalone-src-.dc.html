@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#0A2340">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A2340"/>
+    <rect x="420" y="260" width="360" height="280" rx="56" fill="#1466BE"/>
+    <path d="M600 330c-42 0-76 34-76 76 0 54 76 116 76 116s76-62 76-116c0-42-34-76-76-76z" fill="#FFFFFF"/>
+    <circle cx="600" cy="404" r="26" fill="#1466BE"/>
+    <text x="600" y="640" font-family="sans-serif" font-size="58" font-weight="700" fill="#FFFFFF" text-anchor="middle">Tax Source India</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #F8FAFC; font-family: "Public Sans", "Helvetica Neue", Helvetica, sans-serif; color: #33495F; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    h1, h2, h3, h4 { font-family: "Instrument Sans", "Instrument Sans Fallback", "Public Sans", sans-serif; color: #0A2340; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+    p { margin: 0; text-wrap: pretty; }
+    a { color: #1466BE; text-decoration: none; }
+    a:hover { color: #0F4F99; }
+    input, select, textarea { font-family: inherit; }
+    input::placeholder, textarea::placeholder { color: #94A2AE; }
+  </style>
+</helmet>
+
+<div style="width: 100%; background: #F8FAFC; overflow-x: hidden;">
+
+  <!-- NAV -->
+  <div style="border-bottom: 1px solid #E2E9F1; background: rgba(248,250,252,0.94); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 40;">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 32px; min-height: 84px;">
+      <a href="#top" style="display: flex; align-items: center; flex-shrink: 0;">
+        <img src="assets/logo.png" alt="Tax Source India" style="display: block; height: 44px; width: auto;">
+      </a>
+
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; align-items: center; gap: 30px; margin-left: 10px;">
+          <a href="#services" style="font-size: 15px; font-weight: 600; color: #0A2340; white-space: nowrap;">Services</a>
+          <a href="#why" style="font-size: 15px; font-weight: 500; color: #556B80; white-space: nowrap;">Why us</a>
+          <a href="#how" style="font-size: 15px; font-weight: 500; color: #556B80; white-space: nowrap;">How it works</a>
+          <a href="#faq" style="font-size: 15px; font-weight: 500; color: #556B80; white-space: nowrap;">FAQ</a>
+        </div>
+      </sc-if>
+
+      <div style="flex-grow: 1;"></div>
+
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <a href="tel:+918179964276" style="display: flex; align-items: center; gap: 8px; color: #0A2340; font-weight: 600; font-size: 15px; white-space: nowrap;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            +91 81799 64276
+          </a>
+          <a href="#contact" style="display: inline-flex; align-items: center; gap: 8px; background: #1466BE; color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 12px 20px; border-radius: 8px; min-height: 46px; white-space: nowrap;" style-hover="background: #0F4F99; color: #FFFFFF;">Book a free call</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <a href="tel:+918179964276" style="width: 46px; height: 46px; border-radius: 8px; border: 1px solid #CDD8E4; background: #FFFFFF; display: flex; align-items: center; justify-content: center;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="width: 46px; height: 46px; border-radius: 8px; border: 1px solid #CDD8E4; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A2340" stroke-width="2" stroke-linecap="round"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg>
+          </button>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top: 1px solid #E2E9F1; background: #F8FAFC; padding: 12px 24px 20px 24px; display: flex; flex-direction: column;">
+        <a href="#services" onClick="{{ closeMenu }}" style="font-size: 16px; font-weight: 600; color: #0A2340; padding: 14px 0; border-bottom: 1px solid #E6EDF4;">Services</a>
+        <a href="#why" onClick="{{ closeMenu }}" style="font-size: 16px; font-weight: 600; color: #0A2340; padding: 14px 0; border-bottom: 1px solid #E6EDF4;">Why us</a>
+        <a href="#how" onClick="{{ closeMenu }}" style="font-size: 16px; font-weight: 600; color: #0A2340; padding: 14px 0; border-bottom: 1px solid #E6EDF4;">How it works</a>
+        <a href="#faq" onClick="{{ closeMenu }}" style="font-size: 16px; font-weight: 600; color: #0A2340; padding: 14px 0;">FAQ</a>
+        <a href="#contact" onClick="{{ closeMenu }}" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #1466BE; color: #FFFFFF; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 8px; min-height: 52px; margin-top: 14px;">Book a free consultation</a>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- HERO -->
+  <div id="top" style="background: linear-gradient(180deg, #F8FAFC 0%, #E7F0FA 100%); padding: clamp(24px, 2.6vw, 36px) 24px 0 24px; position: relative; overflow: hidden;">
+    <div style="max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: clamp(28px, 3.4vw, 52px); align-items: center;">
+
+      <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; background: #FFFFFF; border: 1px solid #D8E2EC; border-radius: 100px; padding: 8px 16px; align-self: flex-start;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+          <span style="font-size: 14px; font-weight: 600; color: #0A2340;">4.8 on Google</span>
+          <span style="width: 1px; height: 14px; background: #D8E2EC;"></span>
+          <span style="font-size: 14px; color: #657A8D;">Bengaluru since 2011</span>
+        </div>
+
+        <h1 style="font-size: clamp(34px, 4.2vw, 50px); line-height: 1.04; font-weight: 800;">An accountant you can <span style="color: #1466BE;">actually reach.</span></h1>
+
+        <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.55; color: #495F73;">GST, income tax and company filings for Bengaluru, handled end to end by chartered accountants, not a call centre.</p>
+
+        <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+          <a href="#contact" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #1466BE; color: #FFFFFF; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 8px; min-height: 52px; box-shadow: 0 8px 20px -10px rgba(20,102,190,0.65);" style-hover="background: #0F4F99; color: #FFFFFF;">Book a free consultation
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+          <a href="https://wa.me/918179964276" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #FFFFFF; color: #0A2340; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 8px; min-height: 52px; border: 1px solid #CDD8E4;" style-hover="border-color: #1466BE; color: #0A2340;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A2340" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            WhatsApp us
+          </a>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;">
+          <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 15px; color: #495F73; font-weight: 500;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>
+            Fixed quote in writing before we start
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 15px; color: #495F73; font-weight: 500;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>
+            One named person handles your file
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 15px; color: #495F73; font-weight: 500;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>
+            Walk in on Church Street, or send it over WhatsApp
+          </div>
+        </div>
+      </div>
+
+      <div style="position: relative; min-width: 0; display: flex; flex-direction: column; align-items: center; padding-bottom: clamp(16px, 2vw, 28px);">
+        <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+          <div style="position: absolute; right: 45px; top: 14px; z-index: 2; background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 10px; padding: 9px 11px; display: flex; align-items: center; gap: 9px; box-shadow: 0 18px 36px -22px rgba(10,35,64,0.5); max-width: 215px;">
+            <div style="width: 26px; height: 26px; border-radius: 7px; background: #E6F0FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 12px; font-weight: 700; line-height: 1.25; white-space: nowrap; color: #0A2340;">Acknowledgement in hand</div>
+              <div style="font-size: 9.5px; line-height: 1.3; white-space: nowrap; color: #6A7B8A;">ITR-V received the same day</div>
+            </div>
+          </div>
+        </sc-if>
+        <div style="position: absolute; right: -40px; top: 10px; width: 400px; height: 400px; border-radius: 100%; background: radial-gradient(circle, rgba(14,124,90,0.13) 0%, rgba(14,124,90,0.04) 55%, rgba(14,124,90,0) 72%); pointer-events: none;"></div>
+        <div style="position: absolute; right: 0px; top: 34px; width: 340px; height: 340px; border-radius: 100%; border: 1px dashed #CBDAEA; pointer-events: none;"></div>
+        <img src="assets/hero.png" alt="Tax Source India accountant with client documents" style="position: relative; display: block; width: 100%; max-width: 420px; height: auto;">
+
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; width: 100%; max-width: 236px; padding: 12px 14px; box-shadow: 0 26px 50px -24px rgba(10,35,64,0.45); margin-top: -160px; align-self: flex-start; position: relative;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 9px; border-bottom: 1px solid #E6EDF4;">
+            <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; color: #0A2340;">Your compliance calendar</div>
+            <div style="display: inline-flex; align-items: center; gap: 6px; background: #E6F0FB; border-radius: 100px; padding: 4px 9px; flex-shrink: 0;">
+              <span style="width: 6px; height: 6px; border-radius: 100px; background: #1466BE;"></span>
+              <span style="font-size: 9.5px; font-weight: 700; color: #1466BE;">On track</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; padding-top: 4px;">
+            <div style="display: flex; align-items: center; gap: 9px; padding: 7px 0;">
+              <div style="width: 30px; height: 30px; border-radius: 7px; background: #F3F6F9; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+                <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 11px; font-weight: 800; line-height: 1; color: #0A2340;">11</div>
+                <div style="font-size: 8.5px; font-weight: 700; color: #6A7B8A;">MTH</div>
+              </div>
+              <div style="flex-grow: 1; font-size: 11.5px; font-weight: 600; color: #0A2340;">GSTR-1</div>
+              <div style="font-size: 9.5px; font-weight: 700; color: #1466BE; background: #E6F0FB; padding: 3px 7px; border-radius: 6px;">Filed</div>
+            </div>
+            <div style="height: 1px; background: #E8EFF5;"></div>
+            <div style="display: flex; align-items: center; gap: 9px; padding: 7px 0;">
+              <div style="width: 30px; height: 30px; border-radius: 7px; background: #F3F6F9; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+                <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 11px; font-weight: 800; line-height: 1; color: #0A2340;">20</div>
+                <div style="font-size: 8.5px; font-weight: 700; color: #6A7B8A;">MTH</div>
+              </div>
+              <div style="flex-grow: 1; font-size: 11.5px; font-weight: 600; color: #0A2340;">GSTR-3B</div>
+              <div style="font-size: 9.5px; font-weight: 700; color: #B07A0C; background: #FDF4E3; padding: 3px 7px; border-radius: 6px;">In review</div>
+            </div>
+            <div style="height: 1px; background: #E8EFF5;"></div>
+            <div style="display: flex; align-items: center; gap: 9px; padding: 7px 0;">
+              <div style="width: 30px; height: 30px; border-radius: 7px; background: #F3F6F9; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+                <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 11px; font-weight: 800; line-height: 1; color: #0A2340;">31</div>
+                <div style="font-size: 8.5px; font-weight: 700; color: #6A7B8A;">JUL</div>
+              </div>
+              <div style="flex-grow: 1; font-size: 11.5px; font-weight: 600; color: #0A2340;">Income tax return</div>
+              <div style="font-size: 9.5px; font-weight: 700; color: #556B80; background: #F1F4F7; padding: 3px 7px; border-radius: 6px;">Upcoming</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width: 1160px; margin: clamp(22px, 2.4vw, 34px) auto 0 auto; border-top: 1px solid #DFE7F0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+      <div style="padding: 22px 30px 26px 0; display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: clamp(28px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.02em; color: #0A2340;">12,000+</div>
+        <div style="font-size: 14.5px; color: #657A8D;">Returns filed for individuals &amp; businesses</div>
+      </div>
+      <div style="padding: 22px 30px 26px 30px; border-left: 1px solid #DFE7F0; display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: clamp(28px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.02em; color: #0A2340;">15+</div>
+        <div style="font-size: 14.5px; color: #657A8D;">Years of practice in Bengaluru</div>
+      </div>
+      <div style="padding: 22px 30px 26px 30px; border-left: 1px solid #DFE7F0; display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: clamp(28px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.02em; color: #0A2340;">15</div>
+        <div style="font-size: 14.5px; color: #657A8D;">Services under one roof</div>
+      </div>
+      <div style="padding: 22px 0 26px 30px; border-left: 1px solid #DFE7F0; display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: clamp(28px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.02em; color: #0A2340;">CA &middot; CS</div>
+        <div style="font-size: 14.5px; color: #657A8D;">Certified professionals on the team</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIENT LOGOS -->
+  <sc-if value="{{ showLogoWall }}" hint-placeholder-val="{{ true }}">
+    <div style="background: #FFFFFF; padding: 46px 24px; border-bottom: 1px solid #E7EEF5;">
+      <div style="max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; align-items: center;">
+        <div style="font-size: 13.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7C8B98; text-align: center;">Trusted by businesses across Bengaluru</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; width: 100%; align-items: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 46px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#98A6B3" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><path d="M8 15V9l8 6V9" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: 0.06em; color: #98A6B3;">CLIENT NAME</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 46px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="12" r="6" stroke="#98A6B3" stroke-width="2"></circle><circle cx="15" cy="12" r="6" stroke="#98A6B3" stroke-width="2"></circle></svg>
+            <span style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: #98A6B3;">Client Name</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 46px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#98A6B3"><path d="M12 2 22 20H2z"></path></svg>
+            <span style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.02em; color: #98A6B3;">CLIENTNAME</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 46px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#98A6B3" stroke-width="2" stroke-linecap="round"><path d="M4 20V8"></path><path d="M10 20V4"></path><path d="M16 20v-9"></path><path d="M22 20V12"></path></svg>
+            <span style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #98A6B3;">Client&middot;Name</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 46px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="#98A6B3"></rect><rect x="13" y="3" width="8" height="8" rx="2" stroke="#98A6B3" stroke-width="2"></rect><rect x="3" y="13" width="8" height="8" rx="2" stroke="#98A6B3" stroke-width="2"></rect><rect x="13" y="13" width="8" height="8" rx="2" fill="#98A6B3"></rect></svg>
+            <span style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.08em; color: #98A6B3;">CLIENT NAME</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 46px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#98A6B3" stroke-width="2" stroke-linejoin="round"><path d="m12 2 9 5v10l-9 5-9-5V7z"></path></svg>
+            <span style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -0.02em; color: #98A6B3;">ClientName</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- AUDIENCE -->
+  <div style="background: #FFFFFF; padding: clamp(56px, 6vw, 88px) 24px;">
+    <div style="max-width: 1160px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 44px;">
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 620px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1466BE;">Where do you fit?</div>
+          <h2 style="font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; font-weight: 800;">Start with what you need this month</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.6; color: #657A8D; max-width: 380px;">No client is too big or too small, from a first salary return to a private limited company's full compliance calendar.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px;">
+
+        <div style="background: #F8FAFC; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="width: 48px; height: 48px; border-radius: 11px; background: #E6F0FB; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <h3 style="font-size: 21px; font-weight: 700;">Salaried &amp; individuals</h3>
+            <p style="font-size: 15px; line-height: 1.6; color: #5B6F83;">Form 16 to filed return. We compare the old and new regime, claim every deduction you qualify for, and handle any notice that follows.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 4px;">
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #33495F;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>Income tax return filing</div>
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #33495F;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>Capital gains &amp; house property</div>
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #33495F;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>Financial planning</div>
+          </div>
+          <div style="flex-grow: 1;"></div>
+          <a href="#contact" style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #1466BE; padding-top: 8px;">Get a quote
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <div style="background: #0A2340; border: 1px solid #0A2340; border-radius: 14px; padding: 30px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="width: 48px; height: 48px; border-radius: 11px; background: #153558; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4CD4DA" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path></svg>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <h3 style="font-size: 21px; font-weight: 700; color: #FFFFFF;">Businesses on GST</h3>
+            <p style="font-size: 15px; line-height: 1.6; color: #A3B7CA;">Registration, monthly returns, reconciliation and e-way bills, run as a routine, not a last-minute scramble.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 4px;">
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #DAE6F0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4CD4DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>GST registration &amp; management</div>
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #DAE6F0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4CD4DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>GSTR-3B &amp; GSTR-1, all year</div>
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #DAE6F0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4CD4DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>Payroll, PF &amp; ESI compliance</div>
+          </div>
+          <div style="flex-grow: 1;"></div>
+          <a href="#contact" style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #4CD4DA; padding-top: 8px;">Get a quote
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4CD4DA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <div style="background: #F8FAFC; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="width: 48px; height: 48px; border-radius: 11px; background: #E6F0FB; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.4 5.3 5.6.6-4.2 3.9 1.2 5.7L12 15.7 7 18.5l1.2-5.7L4 8.9l5.6-.6z"></path></svg>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <h3 style="font-size: 21px; font-weight: 700;">Founders &amp; startups</h3>
+            <p style="font-size: 15px; line-height: 1.6; color: #5B6F83;">Get incorporated properly the first time: the right structure, the right registrations, and the filings that keep it clean.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 4px;">
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #33495F;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>Pvt Ltd, LLP, OPC &amp; partnership</div>
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #33495F;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>MCA corporate filings</div>
+            <div style="display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: #33495F;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M20 6 9 17l-5-5"></path></svg>Trademark &amp; IP services</div>
+          </div>
+          <div style="flex-grow: 1;"></div>
+          <a href="#contact" style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #1466BE; padding-top: 8px;">Get a quote
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" style="background: #EDF2F8; padding: clamp(56px, 6vw, 88px) 24px; scroll-margin-top: 90px;">
+    <div style="max-width: 1160px; margin: 0 auto;">
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 44px; max-width: 700px;">
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1466BE;">Everything under one roof</div>
+        <h2 style="font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; font-weight: 800;">Fifteen services, one point of contact</h2>
+        <p style="font-size: 17px; line-height: 1.65; color: #5B6F83;">Rely on the most trusted professional services providers as per your need, without chasing three different consultants.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px;">
+
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px 28px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #E6F0FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 15h6"></path><path d="M9 11h3"></path></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 700;">Tax &amp; filing</h3>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Individual &amp; corporate tax filing</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">GST registration &amp; management</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">GST return filing: GSTR-3B &amp; 1</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Audit defence &amp; audit services</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Financial planning</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px 28px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #E6F0FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18"></path><path d="M8 4v3"></path><path d="M16 4v3"></path></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 700;">Registrations</h3>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Startup &amp; company registration</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Udyog Aadhaar (MSME)</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Importer Exporter Code (IEC)</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Digital Signature Certificate</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Professional Tax (PT) registration</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px 28px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #E6F0FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M12 18v4"></path><circle cx="12" cy="12" r="4"></circle><path d="m4.9 4.9 2.9 2.9"></path><path d="m16.2 16.2 2.9 2.9"></path><path d="M2 12h4"></path><path d="M18 12h4"></path></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 700;">Ongoing compliance</h3>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Payroll compliance</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">PF &amp; ESI registration</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Corporate &amp; MCA filings</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E7EEF5; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">E-way bill registration &amp; generation</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+            <a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; color: #1F3A55;" style-hover="color: #1466BE;"><span style="font-size: 15.5px; font-weight: 500;">Intellectual property services</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B2C0CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"></path></svg></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
+        <p style="font-size: 16px; color: #5B6F83;">Not sure which applies to you?</p>
+        <a href="#contact" style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: #1466BE;">Tell us your situation
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div id="why" style="background: #FFFFFF; padding: clamp(56px, 6vw, 88px) 24px; scroll-margin-top: 90px;">
+    <div style="max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: clamp(32px, 4vw, 60px); align-items: center;">
+
+      <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <div style="position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 48px -28px rgba(10,35,64,0.45);">
+          <img src="assets/team.jpg" alt="The Tax Source India team in the Bengaluru office" style="display: block; width: 100%; height: auto;">
+          <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 22px 18px 22px; background: linear-gradient(180deg, rgba(10,35,64,0) 0%, rgba(10,35,64,0.82) 100%);">
+            <div style="font-size: 15px; font-weight: 700; color: #FFFFFF;">The people who will handle your file</div>
+            <div style="font-size: 13.5px; color: #C1D0DE; margin-top: 2px;">Church Street office, HAL 3rd Stage</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+          <div style="position: relative; height: 190px; border-radius: 14px; overflow: hidden;">
+            <img src="assets/exterior.jpg" alt="The building housing the Tax Source India office" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 12px 14px; background: linear-gradient(180deg, rgba(10,35,64,0) 0%, rgba(10,35,64,0.78) 100%);">
+              <div style="font-size: 13.5px; font-weight: 700; color: #FFFFFF;">Find us on Church Street</div>
+            </div>
+          </div>
+          <div style="position: relative; height: 190px; border-radius: 14px; overflow: hidden;">
+            <img src="assets/meeting.jpg" alt="A Tax Source India adviser talking a client through their filings" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 12px 14px; background: linear-gradient(180deg, rgba(10,35,64,0) 0%, rgba(10,35,64,0.78) 100%);">
+              <div style="font-size: 13.5px; font-weight: 700; color: #FFFFFF;">Sitting down with a client</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1466BE;">Why Tax Source India</div>
+        <h2 style="font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; font-weight: 800;">An accountant you can rely on, not a helpdesk ticket</h2>
+        <p style="font-size: 17px; line-height: 1.65; color: #5B6F83;">Software can fill a form. What it cannot do is know your business, spot the deduction you forgot, or argue your case when a notice arrives. That is the part we do.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; padding-top: 6px;">
+          <div style="display: flex; gap: 18px; align-items: flex-start;">
+            <div style="width: 44px; height: 44px; border-radius: 11px; background: #E6F0FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <h3 style="font-size: 19px; font-weight: 700;">Trustworthy</h3>
+              <p style="font-size: 15px; line-height: 1.6; color: #5B6F83;">A professional team serving individuals and businesses across every aspect of tax, registration and compliance.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 18px; align-items: flex-start;">
+            <div style="width: 44px; height: 44px; border-radius: 11px; background: #E6F0FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <h3 style="font-size: 19px; font-weight: 700;">Experienced</h3>
+              <p style="font-size: 15px; line-height: 1.6; color: #5B6F83;">Expertise proven in real-world environments: assessments, scrutiny, departmental queries and the everyday grind of monthly filing.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 18px; align-items: flex-start;">
+            <div style="width: 44px; height: 44px; border-radius: 11px; background: #E6F0FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"></path><path d="M12 9v4"></path><path d="M12 16h.01"></path></svg>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <h3 style="font-size: 19px; font-weight: 700;">Professional</h3>
+              <p style="font-size: 15px; line-height: 1.6; color: #5B6F83;">Certified chartered accountants, company secretaries and experienced accountants, qualified people, working under one roof.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #F8FAFC; border: 1px solid #DEE6EF; border-radius: 14px; padding: 20px 22px; display: flex; gap: 16px; align-items: flex-start; margin-top: 8px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <p style="font-size: 15.5px; line-height: 1.6; color: #33495F;"><strong style="color: #0A2340;">At Tax Source India, no client is too big or small.</strong> We work with individuals, small and mid-sized businesses, large firms and multinationals alike.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div id="how" style="background: #0A2340; padding: clamp(56px, 6vw, 84px) 24px; scroll-margin-top: 90px;">
+    <div style="max-width: 1160px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 48px;">
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #4CD4DA;">How it works</div>
+          <h2 style="font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; font-weight: 800; color: #FFFFFF;">Four steps, no surprises</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.6; color: #91A6BA; max-width: 360px;">Walk into the Church Street office or send documents over WhatsApp. Either way the process is the same.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <div style="background: #112C4C; border: 1px solid #1C405F; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; color: #4CD4DA;">STEP 01</div>
+          <h3 style="font-size: 20px; font-weight: 700; color: #FFFFFF;">Tell us your situation</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #91A6BA;">A free call or a walk-in. We ask what you earn, what you run and what has already been filed.</p>
+        </div>
+        <div style="background: #112C4C; border: 1px solid #1C405F; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; color: #4CD4DA;">STEP 02</div>
+          <h3 style="font-size: 20px; font-weight: 700; color: #FFFFFF;">Get a fixed quote</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #91A6BA;">Scope and price in writing before any work starts. No hourly meter, no bill at the end you did not expect.</p>
+        </div>
+        <div style="background: #112C4C; border: 1px solid #1C405F; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; color: #4CD4DA;">STEP 03</div>
+          <h3 style="font-size: 20px; font-weight: 700; color: #FFFFFF;">Share your documents</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #91A6BA;">Form 16, invoices, bank statements, by WhatsApp, email or in person. We tell you exactly what is missing.</p>
+        </div>
+        <div style="background: #112C4C; border: 1px solid #1C405F; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; color: #4CD4DA;">STEP 04</div>
+          <h3 style="font-size: 20px; font-weight: 700; color: #FFFFFF;">We file, and stay on it</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #91A6BA;">Acknowledgement in your hands, next due date in our calendar, and a person to call if a notice turns up.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div style="background: #F8FAFC; padding: clamp(56px, 6vw, 88px) 24px;">
+    <div style="max-width: 1160px; margin: 0 auto;">
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 44px; max-width: 640px;">
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1466BE;">In their words</div>
+        <h2 style="font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; font-weight: 800;">Clients who come back every year</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px 28px; display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; gap: 3px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+          </div>
+          <p style="font-size: 16.5px; line-height: 1.65; color: #1F3A55;">&ldquo;Very helpful and service was efficient. Like their approach to getting things done. I see them every year and always walk away satisfied.&rdquo;</p>
+          <div style="flex-grow: 1;"></div>
+          <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid #E7EEF5;">
+            <div style="width: 40px; height: 40px; border-radius: 100px; background: #0A2340; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0;">LR</div>
+            <div style="display: flex; flex-direction: column; gap: 1px;">
+              <div style="font-size: 15px; font-weight: 700; color: #0A2340;">Lokeswara Rao</div>
+              <div style="font-size: 13px; color: #6A7B8A;">[ROLE]</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px 28px; display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; gap: 3px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+          </div>
+          <p style="font-size: 16.5px; line-height: 1.65; color: #1F3A55;">&ldquo;I am extremely happy with the work and overall experience, with the care they took over my needs. [PASTE FULL REVIEW]&rdquo;</p>
+          <div style="flex-grow: 1;"></div>
+          <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid #E7EEF5;">
+            <div style="width: 40px; height: 40px; border-radius: 100px; background: #0A2340; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0;">RR</div>
+            <div style="display: flex; flex-direction: column; gap: 1px;">
+              <div style="font-size: 15px; font-weight: 700; color: #0A2340;">Raja S Reddy</div>
+              <div style="font-size: 13px; color: #6A7B8A;">[ROLE]</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 30px 28px; display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; gap: 3px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+          </div>
+          <p style="font-size: 16.5px; line-height: 1.65; color: #1F3A55;">&ldquo;Filing ITR with Tax Source India is always a great experience. The tax experts are very professional. [PASTE FULL REVIEW]&rdquo;</p>
+          <div style="flex-grow: 1;"></div>
+          <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid #E7EEF5;">
+            <div style="width: 40px; height: 40px; border-radius: 100px; background: #0A2340; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0;">AK</div>
+            <div style="display: flex; flex-direction: column; gap: 1px;">
+              <div style="font-size: 15px; font-weight: 700; color: #0A2340;">Ashar Khateer</div>
+              <div style="font-size: 13px; color: #6A7B8A;">[ROLE]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq" style="background: #EDF2F8; padding: clamp(56px, 6vw, 88px) 24px; scroll-margin-top: 90px;">
+    <div style="max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: clamp(32px, 4vw, 70px); align-items: start;">
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1466BE;">Questions we get asked</div>
+        <h2 style="font-size: clamp(26px, 3.2vw, 38px); line-height: 1.12; font-weight: 800;">Before you pick up the phone</h2>
+        <p style="font-size: 16.5px; line-height: 1.65; color: #5B6F83;">If your situation is not covered here, ask us directly. A straight answer costs nothing.</p>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+          <div style="display: flex; align-items: center; gap: 11px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <div style="font-size: 16px; font-weight: 700; color: #0A2340;">Still not sure?</div>
+          </div>
+          <p style="font-size: 14.5px; line-height: 1.6; color: #5B6F83;">Send us a message on WhatsApp with your situation. We will tell you what applies and what it costs.</p>
+          <a href="https://wa.me/918179964276" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #1466BE;">+91 81799 64276
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
+          <div style="background: #FFFFFF; border: 1px solid #DEE6EF; border-radius: 14px; padding: 24px 26px; display: flex; flex-direction: column; gap: 12px;">
+            <div onClick="{{ f.toggle }}" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer;">
+              <h3 style="font-size: 18.5px; font-weight: 700;">{{ f.q }}</h3>
+              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M5 12h14"></path></svg>
+              </sc-if>
+              <sc-if value="{{ f.closed }}" hint-placeholder-val="{{ true }}">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8B98" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+              </sc-if>
+            </div>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size: 15.5px; line-height: 1.65; color: #5B6F83;">{{ f.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+
+        <div style="display: flex; align-items: flex-start; gap: 10px; padding: 8px 4px;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6B7A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+          <p style="font-size: 14px; line-height: 1.5; color: #6B7A8A;">[WRITE THE SEVEN COLLAPSED ANSWERS]. The first one is filled in as a sample of length and tone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" style="background: #FFFFFF; padding: clamp(56px, 6vw, 88px) 24px; scroll-margin-top: 90px;">
+    <div style="max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: clamp(32px, 4vw, 60px); align-items: start;">
+
+      <div style="display: flex; flex-direction: column; gap: 26px; min-width: 0;">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1466BE;">Come see us</div>
+          <h2 style="font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; font-weight: 800;">On Church Street, HAL 3rd Stage</h2>
+          <p style="font-size: 17px; line-height: 1.65; color: #5B6F83;">Walk in with your documents, or start the conversation on the phone. Either way you speak to the person who will handle your file.</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column;">
+          <div style="display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-top: 1px solid #E6EDF4;">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6A7B8A;">Office</div>
+              <div style="font-size: 16px; line-height: 1.55; color: #1F3A55;">Shop No. 03, No. 437/38, Ground Floor,<br>7th Main, Church Street, HAL 3rd Stage,<br>New Tippasandra, Bengaluru, Karnataka 560075</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-top: 1px solid #E6EDF4;">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6A7B8A;">Phone</div>
+              <div style="font-size: 16px; line-height: 1.55; color: #1F3A55;"><a href="tel:+918179964276" style="color: #1F3A55;">+91 81799 64276</a> &nbsp;&middot;&nbsp; <a href="tel:+919742709374" style="color: #1F3A55;">+91 97427 09374</a></div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-top: 1px solid #E6EDF4;">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 6 10-6"></path></svg>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6A7B8A;">Email</div>
+              <div style="font-size: 16px; line-height: 1.55; color: #1F3A55;"><a href="mailto:info@taxsourceindia.com" style="color: #1F3A55;">info@taxsourceindia.com</a></div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-top: 1px solid #E6EDF4; border-bottom: 1px solid #E6EDF4;">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6A7B8A;">Hours</div>
+              <div style="font-size: 16px; line-height: 1.55; color: #1F3A55;">Monday to Friday, 8:00 am &ndash; 7:00 pm &nbsp;&middot;&nbsp; Closed Saturday &amp; Sunday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #F8FAFC; border: 1px solid #DEE6EF; border-radius: 14px; padding: clamp(24px, 3vw, 34px); display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <h3 style="font-size: 24px; font-weight: 800;">Ask us anything</h3>
+          <p style="font-size: 15px; line-height: 1.6; color: #5B6F83;">Tell us what you need and we will come back with a fixed quote.</p>
+        </div>
+
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start; background: #E6F0FB; border-radius: 10px; padding: 24px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1466BE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12.5 2.5 2.5 4.5-5"></path></svg>
+            <div style="font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif; font-size: 19px; font-weight: 700; color: #0A2340; letter-spacing: -0.02em;">Thank you, we have your details</div>
+            <p style="font-size: 15px; line-height: 1.6; color: #33495F;">We call back the same working day. If it is urgent, ring +91 81799 64276.</p>
+            <button type="button" onClick="{{ resetForm }}" style="background: none; border: none; padding: 0; font-family: inherit; font-size: 15px; font-weight: 700; color: #1466BE; cursor: pointer;">Send another enquiry</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px;">
+              <label style="display: flex; flex-direction: column; gap: 7px;">
+                <span style="font-size: 13.5px; font-weight: 600; color: #33495F;">Your name</span>
+                <input type="text" required="required" placeholder="Full name" value="{{ name }}" onChange="{{ setName }}" style="background: #FFFFFF; border: 1px solid #D5DFEA; border-radius: 8px; height: 48px; padding: 0 14px; font-size: 15px; color: #1F3A55; width: 100%;">
+              </label>
+              <label style="display: flex; flex-direction: column; gap: 7px;">
+                <span style="font-size: 13.5px; font-weight: 600; color: #33495F;">Phone</span>
+                <input type="tel" required="required" placeholder="+91" value="{{ phone }}" onChange="{{ setPhone }}" style="background: #FFFFFF; border: 1px solid #D5DFEA; border-radius: 8px; height: 48px; padding: 0 14px; font-size: 15px; color: #1F3A55; width: 100%;">
+              </label>
+            </div>
+
+            <label style="display: flex; flex-direction: column; gap: 7px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #33495F;">Email</span>
+              <input type="email" placeholder="you@example.com" value="{{ email }}" onChange="{{ setEmail }}" style="background: #FFFFFF; border: 1px solid #D5DFEA; border-radius: 8px; height: 48px; padding: 0 14px; font-size: 15px; color: #1F3A55; width: 100%;">
+            </label>
+
+            <label style="display: flex; flex-direction: column; gap: 7px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #33495F;">What do you need help with?</span>
+              <select value="{{ topic }}" onChange="{{ setTopic }}" style="background: #FFFFFF; border: 1px solid #D5DFEA; border-radius: 8px; height: 48px; padding: 0 12px; font-size: 15px; color: #1F3A55; width: 100%;">
+                <option>Income tax return filing</option>
+                <option>GST registration or returns</option>
+                <option>Company or LLP registration</option>
+                <option>Payroll, PF &amp; ESI compliance</option>
+                <option>A notice from the department</option>
+                <option>Something else</option>
+              </select>
+            </label>
+
+            <label style="display: flex; flex-direction: column; gap: 7px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #33495F;">A few details</span>
+              <textarea rows="4" placeholder="Salaried with some capital gains this year, first time filing ITR-2&hellip;" value="{{ details }}" onChange="{{ setDetails }}" style="background: #FFFFFF; border: 1px solid #D5DFEA; border-radius: 8px; padding: 14px; font-size: 15px; color: #1F3A55; line-height: 1.5; width: 100%; resize: vertical;"></textarea>
+            </label>
+
+            <button type="submit" style="display: flex; align-items: center; justify-content: center; background: #1466BE; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 16px; height: 54px; border: none; border-radius: 8px; box-shadow: 0 8px 20px -10px rgba(20,102,190,0.65); cursor: pointer;" style-hover="background: #0F4F99;">Request a callback</button>
+
+            <div style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#788897" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+              <span style="font-size: 13.5px; color: #6A7B8A;">Your details stay with us and are never shared.</span>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div style="background: #EDF2F8; padding: clamp(44px, 5vw, 64px) 24px;">
+    <div style="max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <h2 style="font-size: clamp(26px, 2.6vw, 32px); font-weight: 800; line-height: 1.15;">Deadline coming up?</h2>
+        <p style="font-size: 17px; color: #5B6F83;">Call us before it is a penalty. We will tell you straight away what it takes.</p>
+      </div>
+      <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+        <a href="#contact" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #1466BE; color: #FFFFFF; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 8px; min-height: 52px; box-shadow: 0 8px 20px -10px rgba(20,102,190,0.65);" style-hover="background: #0F4F99; color: #FFFFFF;">Book a free consultation</a>
+        <a href="tel:+918179964276" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #FFFFFF; color: #0A2340; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 8px; min-height: 52px; border: 1px solid #CDD8E4;" style-hover="border-color: #1466BE; color: #0A2340;">+91 81799 64276</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background: #0A2340; padding: clamp(48px, 5vw, 64px) 24px 34px 24px;">
+    <div style="max-width: 1160px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 44px; border-bottom: 1px solid #1C405F;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+            <img src="assets/logo-mark.png" alt="Tax Source India" style="display: block; width: 52px; height: 52px; border-radius: 12px;">
+            <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6C849A; font-weight: 600;">An accountant you can rely on</div>
+          </div>
+          <p style="font-size: 14.5px; line-height: 1.65; color: #8DA3B8; max-width: 300px;">Chartered accountants, company secretaries and experienced accountants serving Bengaluru: individuals, businesses and multinationals alike.</p>
+          <div style="display: flex; gap: 10px;">
+            <a href="#top" style="width: 38px; height: 38px; border-radius: 9px; background: #153558; display: flex; align-items: center; justify-content: center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8DA3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#top" style="width: 38px; height: 38px; border-radius: 9px; background: #153558; display: flex; align-items: center; justify-content: center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8DA3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.5 6.5h.01"></path></svg></a>
+            <a href="#top" style="width: 38px; height: 38px; border-radius: 9px; background: #153558; display: flex; align-items: center; justify-content: center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8DA3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.5 9.5L4.5 20"></path><path d="M20 4l-7.5 9.5L19.5 20"></path><path d="M4 4h3.5L20 20h-3.5z"></path></svg></a>
+            <a href="https://wa.me/918179964276" target="_blank" rel="noopener" style="width: 38px; height: 38px; border-radius: 9px; background: #153558; display: flex; align-items: center; justify-content: center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8DA3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 13px;">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #FFFFFF;">Tax &amp; filing</div>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Income tax return filing</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Corporate tax filing</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">GST registration</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">GST return filing</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Audit services</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Financial planning</a>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 13px;">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #FFFFFF;">Registrations</div>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Company registration</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">LLP &amp; partnership</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Udyog Aadhaar (MSME)</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Importer Exporter Code</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Digital Signature</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">PT registration</a>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 13px;">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #FFFFFF;">Compliance</div>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Payroll compliance</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">PF &amp; ESI registration</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Corporate &amp; MCA filings</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">E-way bills</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Intellectual property</a>
+          <a href="#services" style="font-size: 14.5px; color: #8DA3B8;">Notice &amp; audit defence</a>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; flex-wrap: wrap;">
+        <div style="font-size: 14px; color: #6C849A;">&copy; 2026 Tax Source India. All rights reserved.</div>
+        <div style="display: flex; gap: 26px; flex-wrap: wrap;">
+          <a href="#top" style="font-size: 14px; color: #8DA3B8;">Privacy policy</a>
+          <a href="#top" style="font-size: 14px; color: #8DA3B8;">Terms of service</a>
+          <a href="mailto:info@taxsourceindia.com" style="font-size: 14px; color: #8DA3B8;">info@taxsourceindia.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ showCallBar }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: #FFFFFF; border-top: 1px solid #DEE6EF; box-shadow: 0 -8px 24px -16px rgba(10,35,64,0.5); padding: 10px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <a href="tel:+918179964276" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #1466BE; color: #FFFFFF; font-weight: 600; font-size: 16px; min-height: 48px; border-radius: 8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        Call now
+      </a>
+      <a href="https://wa.me/918179964276" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #FFFFFF; color: #0A2340; font-weight: 600; font-size: 16px; min-height: 48px; border-radius: 8px; border: 1px solid #CDD8E4;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A2340" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        WhatsApp
+      </a>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showLogoWall&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;stickyCallBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;openFirstFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page&quot;}}">
+class Component extends DCLogic {
+  state = {
+    w: typeof window !== "undefined" ? window.innerWidth : 1440,
+    menuOpen: false,
+    openFaq: 0,
+    sent: false,
+    name: "", phone: "", email: "", topic: "Income tax return filing", details: ""
+  };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener("resize", this.onResize);
+    if (this.props.openFirstFaq === false) this.setState({ openFaq: -1 });
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this.onResize); }
+
+  questions = [
+    ["What documents do you need from me to file my return?", "For most salaried filers: PAN, Aadhaar, Form 16, bank interest details and proof of any deductions you want to claim. If you have capital gains, add your broker statement; for house property, the loan interest certificate. We send you a checklist for your exact situation, so nothing goes back and forth twice."],
+    ["Which ITR form applies to me?", "[WRITE THIS ANSWER]"],
+    ["Old regime or new regime, which should I choose?", "[WRITE THIS ANSWER]"],
+    ["How long does a GST registration take?", "[WRITE THIS ANSWER]"],
+    ["I have received a notice from the department. Can you handle it?", "[WRITE THIS ANSWER]"],
+    ["Which company structure should I register: Pvt Ltd, LLP or OPC?", "[WRITE THIS ANSWER]"],
+    ["Do you work with clients outside Bengaluru?", "[WRITE THIS ANSWER]"],
+    ["How do your fees work?", "[WRITE THIS ANSWER]"]
+  ];
+
+  renderVals() {
+    const narrow = this.state.w < 1080;
+    const set = (k) => (e) => this.setState({ [k]: e.target.value });
+    return {
+      wide: !narrow,
+      narrow,
+      menuOpen: narrow && this.state.menuOpen,
+      showCallBar: narrow && (this.props.stickyCallBar ?? true),
+      showLogoWall: this.props.showLogoWall ?? true,
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      faqs: this.questions.map(([q, a], i) => ({
+        q, a,
+        open: this.state.openFaq === i,
+        closed: this.state.openFaq !== i,
+        toggle: () => this.setState((s) => ({ openFaq: s.openFaq === i ? -1 : i }))
+      })),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      name: this.state.name, phone: this.state.phone, email: this.state.email,
+      topic: this.state.topic, details: this.state.details,
+      setName: set("name"), setPhone: set("phone"), setEmail: set("email"),
+      setTopic: set("topic"), setDetails: set("details"),
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      resetForm: () => this.setState({ sent: false, name: "", phone: "", email: "", details: "" })
+    };
+  }
+}
+</script>
+</body>
+</html>

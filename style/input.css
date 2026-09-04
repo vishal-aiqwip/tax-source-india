@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* Tailwind v4 does not scan .php by default — point it at every template dir. */
+@source "../index.php";
+@source "../pages";
+@source "../include";
+@source "../js";
+
+@theme {
+  /* ---- brand ---- */
+  --color-navy: #0a2340; /* headings, dark bands, footer */
+  --color-navy-card: #112c4c; /* cards on dark bands */
+  --color-navy-line: #1c405f; /* borders on dark bands */
+  --color-navy-chip: #153558; /* icon chips on dark bands */
+  --color-brand: #1466be;
+  --color-brand-dark: #0f4f99; /* hover */
+  --color-brand-tint: #e6f0fb; /* icon chip fill on light */
+  --color-teal: #4cd4da; /* accent on dark bands */
+  --color-gold: #f5a623; /* review stars */
+
+  /* ---- surfaces ---- */
+  --color-page: #f8fafc;
+  --color-band: #edf2f8;
+  --color-hero-end: #e7f0fa;
+  --color-fill: #f3f6f9; /* neutral tile fill */
+  --color-amber-tint: #fdf4e3; /* "In review" badge */
+  --color-amber-ink: #b07a0c;
+
+  /* ---- text ---- */
+  --color-body: #33495f;
+  --color-ink: #1f3a55; /* slightly darker body, form text */
+  --color-muted: #5b6f83;
+  --color-muted-2: #6a7b8a;
+  --color-faint: #98a6b3; /* placeholder logos, disabled */
+  --color-on-dark: #8da3b8;
+  --color-on-dark-2: #6c849a;
+
+  /* ---- lines ---- */
+  --color-line: #dee6ef;
+  --color-line-soft: #e7eef5;
+  --color-line-input: #d5dfea;
+  --color-line-strong: #cdd8e4;
+
+  /* ---- type ---- */
+  --font-display: "Instrument Sans", "Public Sans", ui-sans-serif, sans-serif;
+  --font-body: "Public Sans", "Helvetica Neue", Helvetica, ui-sans-serif, sans-serif;
+
+  /* The reference's own desktop/mobile switch. */
+  --breakpoint-nav: 1080px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #94a2ae;
+  }
+
+  /* Native <details> accordion: hide the default marker so the +/- icons show. */
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+/* The two button treatments, each used 6+ times across the page. */
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 52px;
+  padding: 1rem 1.625rem;
+  border-radius: 0.5rem;
+  background: var(--color-brand);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 8px 20px -10px rgb(20 102 190 / 0.65);
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background: var(--color-brand-dark);
+    color: #fff;
+  }
+}
+
+@utility btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 52px;
+  padding: 1rem 1.625rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--color-navy);
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid var(--color-line-strong);
+  transition: border-color 150ms ease;
+
+  &:hover {
+    border-color: var(--color-brand);
+    color: var(--color-navy);
+  }
+}
+
+/* Section eyebrow label — appears above every h2. */
+@utility eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}

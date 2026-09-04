@@ -1,0 +1,9 @@
+node_modules/
+
+# SMTP credentials — never commit.
+include/config.local.php
+
+# Enquiry log: names, phone numbers, email addresses.
+data/*.csv
+
+# Note: style/tailwind.css IS committed — the server has no build step.

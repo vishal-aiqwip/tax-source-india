@@ -1,0 +1,110 @@
+{
+  "pages": [
+    {
+      "id": "v2",
+      "name": "v2 \u2014 with imagery"
+    },
+    {
+      "id": "v1",
+      "name": "v1 \u2014 original"
+    },
+    {
+      "id": "ds",
+      "name": "Design system"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "page": "v2",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 8600,
+      "title": "v2 Homepage \u2014 desktop"
+    },
+    {
+      "file": "Mobile.dc.html",
+      "page": "v2",
+      "x": 1600,
+      "y": 0,
+      "w": 390,
+      "h": 7300,
+      "title": "v2 Homepage \u2014 mobile"
+    },
+    {
+      "file": "V1Desktop.dc.html",
+      "page": "v1",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 6500,
+      "title": "v1 Homepage \u2014 desktop"
+    },
+    {
+      "file": "V1Mobile.dc.html",
+      "page": "v1",
+      "x": 1600,
+      "y": 0,
+      "w": 390,
+      "h": 4000,
+      "title": "v1 Homepage \u2014 mobile"
+    },
+    {
+      "file": "Foundations.dc.html",
+      "page": "ds",
+      "x": 0,
+      "y": 0,
+      "w": 1000,
+      "h": 1700,
+      "title": "Foundations"
+    },
+    {
+      "file": "Components.dc.html",
+      "page": "ds",
+      "x": 1120,
+      "y": 0,
+      "w": 1100,
+      "h": 1900,
+      "title": "Components"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "v2-brief",
+      "page": "v2",
+      "x": 0,
+      "y": -230,
+      "w": 660,
+      "text": "Tax Source India \u2014 homepage v2\nNew since v1: visual-led hero built around your photo, an industries strip, photography through the Why-us section, an 8-question FAQ, and a map band under contact.\n\nRemaining dashed boxes are photo slots with purpose and pixel size on them; every [SQUARE BRACKET] is a real fact still to fill in."
+    },
+    {
+      "id": "v2-mobile",
+      "page": "v2",
+      "x": 1600,
+      "y": -230,
+      "w": 390,
+      "text": "Mobile v2 \u2014 same sections condensed. Tap targets 44px+. The call bar sits at the end of the page here; in build it should be pinned to the bottom of the viewport."
+    },
+    {
+      "id": "v1-note",
+      "page": "v1",
+      "x": 0,
+      "y": -160,
+      "w": 620,
+      "text": "v1 \u2014 the original pass, kept for comparison. No photography; text and vector icons only."
+    },
+    {
+      "id": "ds-note",
+      "page": "ds",
+      "x": 0,
+      "y": -170,
+      "w": 640,
+      "text": "Design system extracted from the homepage \u2014 colour, type, spacing, elevation and the component set.\nEvery value is lifted from the built artboards rather than rounded to a grid, so anything new built from this sheet will match the page exactly."
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "ds"
+  }
+}
