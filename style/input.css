@@ -143,6 +143,70 @@
   }
 }
 
+/* Hero stats strip.
+   Dividers have to follow the visual rows, and Tailwind's divide-* / first: /
+   last: utilities work on DOM order, which cannot see rows in a wrapping
+   grid. Explicit column counts plus nth-child rules keep every row starting
+   at the same x and stop a stray divider appearing at a row's outer edge. */
+@layer components {
+  .stats-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .stats-strip > * {
+    padding: 22px 0 26px;
+  }
+
+  /* one column: horizontal rules between cells, all flush left */
+  .stats-strip > * + * {
+    border-top: 1px solid var(--color-line);
+  }
+
+  /* two columns — bounded, so its nth-child rules (which outrank the
+     four-column block's plain `> *` reset) cannot leak upward */
+  @media (40rem <= width < 64rem) {
+    .stats-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stats-strip > * {
+      padding-inline: 30px;
+      border-top: 0;
+    }
+    .stats-strip > *:nth-child(2n + 1) {
+      padding-inline-start: 0;
+    }
+    .stats-strip > *:nth-child(2n) {
+      padding-inline-end: 0;
+      border-inline-start: 1px solid var(--color-line);
+    }
+    /* second row only */
+    .stats-strip > *:nth-child(n + 3) {
+      border-top: 1px solid var(--color-line);
+    }
+  }
+
+  /* four columns: a single row */
+  @media (width >= 64rem) {
+    .stats-strip {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stats-strip > * {
+      padding-inline: 30px;
+      border-top: 0;
+      border-inline-start: 1px solid var(--color-line);
+    }
+    .stats-strip > *:first-child {
+      padding-inline-start: 0;
+      border-inline-start: 0;
+    }
+    .stats-strip > *:last-child {
+      padding-inline-end: 0;
+    }
+  }
+}
+
 /* Section eyebrow label — appears above every h2. */
 @utility eyebrow {
   font-size: 12px;

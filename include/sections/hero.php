@@ -102,10 +102,13 @@
     </div>
   </div>
 
-  <!-- stats strip -->
-  <div class="mx-auto mt-[clamp(22px,2.4vw,34px)] grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] border-t border-[#DFE7F0]">
-    <?php foreach ($h['stats'] as $i => $stat): ?>
-    <div class="flex flex-col gap-1.5 pt-[22px] pb-[26px] <?= $i === 0 ? 'pr-[30px]' : 'border-l border-[#DFE7F0] px-[30px]' ?><?= $i === count($h['stats']) - 1 ? ' pr-0' : '' ?>">
+  <!-- Stats strip. The grid collapses to one column on mobile, so the
+       dividers run horizontally there and switch to vertical once the cells
+       sit side by side. Cells are flush left on mobile; the 30px gutters and
+       the flush outer edges only apply once there is more than one column. -->
+  <div class="stats-strip mx-auto mt-[clamp(22px,2.4vw,34px)] max-w-[1160px]">
+    <?php foreach ($h['stats'] as $stat): ?>
+    <div class="flex flex-col gap-1.5">
       <div class="font-display text-[clamp(28px,2.6vw,34px)] font-extrabold tracking-[-0.02em] text-navy"><?= $stat['value'] ?></div>
       <div class="text-[14.5px] text-[#657A8D]"><?= $stat['label'] ?></div>
     </div>
