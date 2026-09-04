@@ -9,6 +9,20 @@ function e(?string $value): string
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+/**
+ * Scheme + host for this request, e.g. "https://taxsourceindia.com".
+ * Sitemaps and robots.txt need absolute URLs, and deriving them from the
+ * request means they stay correct when the site moves to its real domain.
+ */
+function site_origin(): string
+{
+    $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+    return ($https ? 'https://' : 'http://') . $host;
+}
+
 /** Absolute URL for a static file under the project root. */
 function asset(string $path): string
 {

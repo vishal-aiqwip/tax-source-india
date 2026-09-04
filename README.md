@@ -19,6 +19,17 @@ start beyond Apache — there is no PHP build and no Node process at runtime.
 | Colours, fonts, breakpoints | `style/input.css` (`@theme` block) |
 | An icon | `include/icons.php` |
 
+**After replacing any file in `images/src/`, re-run the image step:**
+
+```
+npm run images
+```
+
+Originals live in `images/src/` and are never modified. The script resizes each
+to 2x its largest CSS slot, sends photographs to WebP and keeps flat logo art
+as PNG, and regenerates the favicon, apple-touch icon and the 1200x630 social
+preview. It took the artwork from 979 KB to 261 KB.
+
 **After touching any Tailwind class or `style/input.css`, rebuild the CSS:**
 
 ```
@@ -28,6 +39,37 @@ npm run css:watch    # rebuild on save while working
 
 `style/tailwind.css` is the file the browser loads and **is committed** — the
 server has no build step, so a class change that is not rebuilt will not apply.
+
+## SEO
+
+`robots.txt` and `sitemap.xml` are generated (`robots.php`, `sitemap.php`,
+routed by `.htaccess`), so their absolute URLs follow whatever host serves the
+site — nothing to edit when it moves to the real domain. The sitemap is built
+from the same page whitelist the router uses, so it cannot list a page that
+does not exist.
+
+`include/head.php` carries per-page title and description, an absolute
+canonical, OG/Twitter tags, and an `AccountingService` JSON-LD block (address,
+both phones, opening hours, geo, rating) emitted on the home page only.
+
+No `FAQPage` schema, deliberately: Google retired FAQ rich results for every
+site in May 2026, so marking up the eight Q&As would earn nothing in the SERP.
+
+### One thing the server must provide
+
+Text assets are served **uncompressed** on this XAMPP install: the stylesheet
+arrives as 106 KB instead of 19 KB. The `.htaccess` already contains the
+`mod_deflate` and `mod_expires` rules, guarded by `<IfModule>`, so they take
+effect the moment those modules exist. XAMPP ships with both commented out —
+uncomment these in `xampp/apache/conf/httpd.conf` and restart Apache:
+
+```
+LoadModule deflate_module modules/mod_deflate.so
+LoadModule expires_module modules/mod_expires.so
+```
+
+That is worth about 168 KB per uncached visit. Most production hosts have them
+on already.
 
 ## Structure
 

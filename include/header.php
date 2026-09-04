@@ -11,7 +11,7 @@
 
     <a href="<?= e(page_url('home')) ?>#top" class="flex shrink-0 items-center">
       <img src="<?= e(asset('images/logo.png')) ?>" alt="<?= e($config['site_name']) ?>"
-           width="176" height="44" class="block h-11 w-auto">
+           width="96" height="44" class="block h-11 w-auto">
     </a>
 
     <!-- desktop nav -->

@@ -196,24 +196,24 @@ return [
         'intro'   => 'Software can fill a form. What it cannot do is know your business, spot the deduction you forgot, or argue your case when a notice arrives. That is the part we do.',
         'photos' => [
             'main' => [
-                'src'   => 'images/team.jpg',
+                'src'   => 'images/team.webp',
                 'alt'   => 'The Tax Source India team in the Bengaluru office',
                 'title' => 'The people who will handle your file',
                 'sub'   => 'Church Street office, HAL 3rd Stage',
-                'w'     => 1200, 'h' => 800,
+                'w'     => 1100, 'h' => 660,
             ],
             'small' => [
                 [
-                    'src'   => 'images/exterior.jpg',
+                    'src'   => 'images/exterior.webp',
                     'alt'   => 'The building housing the Tax Source India office',
                     'title' => 'Find us on Church Street',
-                    'w'     => 800, 'h' => 600,
+                    'w'     => 760, 'h' => 427,
                 ],
                 [
-                    'src'   => 'images/meeting.jpg',
+                    'src'   => 'images/meeting.webp',
                     'alt'   => 'A Tax Source India adviser talking a client through their filings',
                     'title' => 'Sitting down with a client',
-                    'w'     => 800, 'h' => 600,
+                    'w'     => 760, 'h' => 427,
                 ],
             ],
         ],

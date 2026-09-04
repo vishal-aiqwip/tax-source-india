@@ -1,7 +1,50 @@
 RewriteEngine On
 
+# robots.txt and sitemap.xml are generated, so their URLs follow the host.
+RewriteRule ^robots\.txt$  robots.php  [L]
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
 # Pretty URLs: /privacy -> index.php?page=privacy
 # The page whitelist in index.php does the real gatekeeping.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z0-9-]+)/?$ index.php?page=$1 [QSA,L]
+
+# ---------------------------------------------------------------- compression
+# Text assets are served raw without this: the stylesheet alone drops from
+# ~106 KB to ~19 KB. Guarded, so it simply does nothing where the module is
+# absent (XAMPP ships with mod_deflate commented out — see README).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# -------------------------------------------------------------------- caching
+# Static assets carry a content hash in neither name nor query, so a year is
+# too long: a month is enough to stop revalidation on every page view while
+# still picking up a redeploy reasonably fast.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                "access plus 1 month"
+  ExpiresByType application/javascript  "access plus 1 month"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType image/x-icon            "access plus 1 year"
+  # HTML must never be cached: the form's CSRF token lives in it.
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|png|jpe?g|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # The enquiry form carries a per-session CSRF token, so pages must not be
+  # stored by a shared cache.
+  <FilesMatch "\.php$">
+    Header set Cache-Control "no-store, must-revalidate"
+  </FilesMatch>
+</IfModule>

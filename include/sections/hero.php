@@ -61,9 +61,9 @@
       <div class="pointer-events-none absolute top-2.5 -right-10 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(14,124,90,0.13)_0%,rgba(14,124,90,0.04)_55%,rgba(14,124,90,0)_72%)]"></div>
       <div class="pointer-events-none absolute top-[34px] right-0 h-[340px] w-[340px] rounded-full border border-dashed border-[#CBDAEA]"></div>
 
-      <img src="<?= e(asset('images/hero.png')) ?>"
+      <img src="<?= e(asset('images/hero.webp')) ?>"
            alt="Tax Source India accountant with client documents"
-           width="420" height="420" fetchpriority="high"
+           width="880" height="853" fetchpriority="high"
            class="relative block h-auto w-full max-w-[420px]">
 
       <!-- compliance calendar card -->

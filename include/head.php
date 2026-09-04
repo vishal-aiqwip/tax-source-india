@@ -5,7 +5,7 @@
  */
 
 $meta  = $content['meta'][$page] ?? $content['meta']['home'];
-$canon = page_url($page === '404' ? 'home' : $page);
+$canon = site_origin() . page_url($page === '404' ? 'home' : $page);
 $addr  = $config['address'];
 ?>
 <head>
@@ -24,13 +24,15 @@ $addr  = $config['address'];
   <meta property="og:title" content="<?= e($meta['title']) ?>">
   <meta property="og:description" content="<?= e($meta['description']) ?>">
   <meta property="og:url" content="<?= e($canon) ?>">
-  <meta property="og:image" content="<?= e(asset('images/hero.png')) ?>">
+  <meta property="og:image" content="<?= e(site_origin() . asset('images/og-image.jpg')) ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
 
   <meta name="theme-color" content="#0A2340">
-  <link rel="icon" href="<?= e(asset('images/logo-mark.png')) ?>">
-  <link rel="apple-touch-icon" href="<?= e(asset('images/logo-mark.png')) ?>">
+  <link rel="icon" href="<?= e(asset('images/favicon-48.png')) ?>" sizes="48x48">
+  <link rel="apple-touch-icon" href="<?= e(asset('images/apple-touch-icon.png')) ?>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,9 +49,9 @@ $addr  = $config['address'];
     '@type'    => 'AccountingService',
     'name'     => $config['site_name'],
     'description' => $meta['description'],
-    'url'      => page_url('home'),
-    'image'    => asset('images/office.jpg'),
-    'logo'     => asset('images/logo.png'),
+    'url'      => site_origin() . page_url('home'),
+    'image'    => site_origin() . asset('images/office.webp'),
+    'logo'     => site_origin() . asset('images/logo.png'),
     'telephone' => [$config['phone_raw'], $config['phone_alt_raw']],
     'email'    => $config['email'],
     'priceRange' => '₹₹',
