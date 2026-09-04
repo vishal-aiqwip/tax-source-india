@@ -8,7 +8,11 @@ $f = $content['faq'];
 <section id="faq" class="scroll-mt-[90px] bg-band px-6 py-[clamp(56px,6vw,88px)]">
   <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-start gap-[clamp(32px,4vw,70px)]">
 
-    <div class="flex flex-col gap-4">
+    <!-- Sticky once the grid is two columns, so the heading and the WhatsApp
+         card stay in view while the answers are read. top-[100px] clears the
+         84px sticky header. Not sticky in one column, where it sits above the
+         list and would pin itself over the questions. -->
+    <div class="flex flex-col gap-4 md:sticky md:top-[100px]">
       <div class="eyebrow text-brand"><?= e($f['eyebrow']) ?></div>
       <h2 class="text-[clamp(26px,3.2vw,38px)] leading-[1.12] font-extrabold"><?= e($f['heading']) ?></h2>
       <p class="text-[16.5px] leading-[1.65] text-muted"><?= e($f['intro']) ?></p>
