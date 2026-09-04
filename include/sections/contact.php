@@ -136,15 +136,47 @@ $field = 'h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink';
           <?php endif; ?>
         </div>
 
-        <div class="flex flex-col gap-[7px]">
-          <label for="f-topic" class="text-[13.5px] font-semibold text-body">What do you need help with?</label>
-          <select id="f-topic" name="topic" class="<?= $field ?> border-line-input px-3">
+        <!-- Progressive enhancement. The <select> is the real control and the
+             source of truth: it submits the value and is fully usable if the
+             script never runs. site.js hides it and reveals the listbox below,
+             which is styleable in a way a native dropdown's OS-drawn list is
+             not, writing every choice back to the select. -->
+        <div class="relative flex flex-col gap-[7px]" data-select>
+          <label id="f-topic-label" for="f-topic" class="text-[13.5px] font-semibold text-body">What do you need help with?</label>
+
+          <select id="f-topic" name="topic" class="<?= $field ?> border-line-input px-3" data-select-native>
             <?php $chosen = old('topic', html_entity_decode($c['topics'][0], ENT_QUOTES, 'UTF-8'));
                   foreach ($c['topics'] as $topic):
                       $value = html_entity_decode($topic, ENT_QUOTES, 'UTF-8'); ?>
             <option value="<?= e($value) ?>" <?= $value === $chosen ? 'selected' : '' ?>><?= e($value) ?></option>
             <?php endforeach; ?>
           </select>
+
+          <div class="relative hidden" data-select-ui>
+            <!-- aria-labelledby lists the question then the button itself, so the
+                 field is announced as "What do you need help with?, <current
+                 value>" rather than just reading the value back. -->
+            <button type="button" id="f-topic-button" data-select-button role="combobox"
+                    aria-labelledby="f-topic-label f-topic-button"
+                    aria-haspopup="listbox" aria-expanded="false" aria-controls="f-topic-list"
+                    class="flex h-12 w-full cursor-pointer items-center justify-between gap-3 rounded-lg border border-line-input bg-white px-3.5 text-left text-[15px] text-ink transition-colors hover:border-brand aria-expanded:border-brand">
+              <span class="truncate" data-select-label><?= e($chosen) ?></span>
+              <?= icon('chevron-right', 'w-4 h-4 shrink-0 rotate-90 text-[#7C8B98] transition-[rotate] duration-150', ['stroke-width' => '2.2', 'data-select-chevron' => '']) ?>
+            </button>
+
+            <ul id="f-topic-list" role="listbox" aria-labelledby="f-topic-label" data-select-list hidden
+                class="absolute z-30 mt-1.5 max-h-[280px] w-full overflow-y-auto rounded-xl border border-line bg-white py-1.5 shadow-[0_20px_44px_-18px_rgba(10,35,64,0.45)]">
+              <?php foreach ($c['topics'] as $topic):
+                        $value = html_entity_decode($topic, ENT_QUOTES, 'UTF-8');
+                        $isSel = $value === $chosen; ?>
+              <li role="option" data-value="<?= e($value) ?>" aria-selected="<?= $isSel ? 'true' : 'false' ?>"
+                  class="flex cursor-pointer items-center justify-between gap-3 px-3.5 py-2.5 text-[15px] text-ink aria-selected:font-semibold aria-selected:text-brand-dark data-[active]:bg-brand-tint">
+                <span><?= e($value) ?></span>
+                <span class="shrink-0 text-brand" data-select-check <?= $isSel ? '' : 'hidden' ?>><?= icon('check', 'w-4 h-4', ['stroke-width' => '2.6']) ?></span>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
         </div>
 
         <div class="flex flex-col gap-[7px]">
