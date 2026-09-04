@@ -7,7 +7,7 @@
       <h2 class="text-[clamp(28px,3.4vw,40px)] leading-[1.12] font-extrabold"><?= e($t['heading']) ?></h2>
     </div>
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[22px]">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-[22px]">
       <?php foreach ($t['items'] as $item): ?>
       <figure class="flex flex-col gap-[18px] rounded-[14px] border border-line bg-white px-7 py-[30px]">
         <div class="flex gap-[3px] text-gold" role="img"

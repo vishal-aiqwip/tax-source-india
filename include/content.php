@@ -58,7 +58,7 @@ return [
     // ---------------------------------------------------------------- hero
     'hero' => [
         'badge_rating' => '4.8 on Google',
-        'badge_since'  => 'Bengaluru since 2011',
+        'badge_since'  => 'Bengaluru since 2018',
         'heading'      => 'An accountant you can',
         'heading_em'   => 'actually reach.',
         'sub'          => 'GST, income tax and company filings for Bengaluru, handled end to end by chartered accountants, not a call centre.',
@@ -82,7 +82,7 @@ return [
         ],
         'stats' => [
             ['value' => '12,000+', 'label' => 'Returns filed for individuals &amp; businesses'],
-            ['value' => '15+',     'label' => 'Years of practice in Bengaluru'],
+            ['value' => '10+',     'label' => 'Years of practice in Bengaluru'],
             ['value' => '15',      'label' => 'Services under one roof'],
             ['value' => 'CA &middot; CS', 'label' => 'Certified professionals on the team'],
         ],

@@ -7,19 +7,10 @@
 <section class="bg-white px-6 py-[clamp(48px,5vw,80px)]">
   <div class="mx-auto max-w-[760px]">
 
-    <div class="mb-10 flex flex-col gap-3.5">
+    <div class="mb-10 flex flex-col gap-3.5 border-b border-line pb-8">
       <div class="eyebrow text-brand">Legal</div>
       <h1 class="text-[clamp(30px,3.6vw,42px)] leading-[1.12] font-extrabold">Terms of service</h1>
       <p class="text-[15px] text-muted-2">Last updated: <?= date('j F Y') ?></p>
-    </div>
-
-    <div class="mb-10 flex items-start gap-3.5 rounded-[14px] border border-[#F0DFB8] bg-amber-tint px-5 py-4">
-      <?= icon('info', 'w-5 h-5 shrink-0 mt-0.5 text-amber-ink') ?>
-      <p class="text-[14.5px] leading-relaxed text-amber-ink">
-        <strong>Placeholder text.</strong> This page sketches the terms a practice of this kind
-        normally sets out, but it has not been drafted or reviewed as a binding agreement. Replace it
-        before the site goes live.
-      </p>
     </div>
 
     <div class="flex flex-col gap-7">

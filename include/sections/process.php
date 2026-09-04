@@ -10,7 +10,7 @@
       <p class="max-w-[360px] text-base leading-relaxed text-[#91A6BA]"><?= e($p['intro']) ?></p>
     </div>
 
-    <ol class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-5">
+    <ol class="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] gap-5">
       <?php foreach ($p['steps'] as $step): ?>
       <li class="flex flex-col gap-3.5 rounded-[14px] border border-navy-line bg-navy-card px-6 py-7">
         <div class="font-display text-[13px] font-extrabold tracking-[0.12em] text-teal"><?= e($step['n']) ?></div>

@@ -42,7 +42,7 @@ $config = [
     // The logo wall ships with generic placeholder marks. Turn this on once
     // real client logos are supplied and added to images/.
     'show_logo_wall' => false,
-    'show_call_bar'  => true,   // sticky mobile call/WhatsApp bar
+    'show_call_bar'  => false,  // sticky mobile call/WhatsApp bar
     'show_chat'      => true,   // floating chat button (hands off to WhatsApp)
 
     // ---- mail ----

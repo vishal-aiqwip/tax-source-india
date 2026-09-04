@@ -1,6 +1,6 @@
 <?php $h = $content['hero']; ?>
 <section id="top" class="relative overflow-hidden bg-linear-to-b from-page to-hero-end px-6 pt-[clamp(24px,2.6vw,36px)]">
-  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(420px,1fr))] items-center gap-[clamp(28px,3.4vw,52px)]">
+  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] items-center gap-[clamp(28px,3.4vw,52px)]">
 
     <!-- copy -->
     <div class="flex min-w-0 flex-col gap-[18px]">
@@ -98,7 +98,7 @@
   </div>
 
   <!-- stats strip -->
-  <div class="mx-auto mt-[clamp(22px,2.4vw,34px)] grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(220px,1fr))] border-t border-[#DFE7F0]">
+  <div class="mx-auto mt-[clamp(22px,2.4vw,34px)] grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] border-t border-[#DFE7F0]">
     <?php foreach ($h['stats'] as $i => $stat): ?>
     <div class="flex flex-col gap-1.5 pt-[22px] pb-[26px] <?= $i === 0 ? 'pr-[30px]' : 'border-l border-[#DFE7F0] px-[30px]' ?><?= $i === count($h['stats']) - 1 ? ' pr-0' : '' ?>">
       <div class="font-display text-[clamp(28px,2.6vw,34px)] font-extrabold tracking-[-0.02em] text-navy"><?= $stat['value'] ?></div>

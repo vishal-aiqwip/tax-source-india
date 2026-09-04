@@ -10,7 +10,7 @@
       <p class="max-w-[380px] text-base leading-relaxed text-[#657A8D]"><?= e($a['intro']) ?></p>
     </div>
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[22px]">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-[22px]">
       <?php foreach ($a['cards'] as $card):
           $dark = $card['dark']; ?>
       <div class="flex flex-col gap-4 rounded-[14px] border p-[30px] <?= $dark

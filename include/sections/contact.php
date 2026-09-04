@@ -12,7 +12,7 @@ $addr  = $config['address'];
 $field = 'h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink';
 ?>
 <section id="contact" class="scroll-mt-[90px] bg-white px-6 py-[clamp(56px,6vw,88px)]">
-  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(380px,1fr))] items-start gap-[clamp(32px,4vw,60px)]">
+  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] items-start gap-[clamp(32px,4vw,60px)]">
 
     <!-- details -->
     <div class="flex min-w-0 flex-col gap-[26px]">
@@ -101,7 +101,7 @@ $field = 'h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink';
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </div>
 
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-3.5">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(140px,100%),1fr))] gap-3.5">
           <div class="flex flex-col gap-[7px]">
             <label for="f-name" class="text-[13.5px] font-semibold text-body">Your name</label>
             <input type="text" id="f-name" name="name" required placeholder="Full name"

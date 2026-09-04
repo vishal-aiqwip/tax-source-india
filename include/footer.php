@@ -7,7 +7,7 @@
 <footer class="bg-navy px-6 pt-[clamp(48px,5vw,64px)] pb-[34px]">
   <div class="mx-auto max-w-[1160px]">
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-10 border-b border-navy-line pb-11">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-10 border-b border-navy-line pb-11">
 
       <div class="flex flex-col gap-4">
         <div class="flex flex-col items-start gap-3">

@@ -3,10 +3,11 @@
  * Floating chat widget. Submitting a message hands off to WhatsApp with the
  * text prefilled — same behaviour as the source design.
  *
- * `bottom` clears the mobile call bar below 1080px.
+ * On mobile `bottom` lifts clear of the sticky call bar, when that is enabled.
  */
+$chat_bottom = !empty($config['show_call_bar']) ? 'bottom-[82px]' : 'bottom-[26px]';
 ?>
-<div class="fixed right-[22px] bottom-[82px] z-60 flex flex-col items-end gap-3 nav:bottom-[26px]">
+<div class="fixed right-[22px] <?= $chat_bottom ?> z-60 flex flex-col items-end gap-3 nav:bottom-[26px]">
 
   <div id="chat-panel" hidden
        class="flex max-h-[calc(100vh-160px)] w-[356px] max-w-[calc(100vw-44px)] min-h-0 flex-col overflow-hidden rounded-[20px] bg-linear-to-b from-brand to-[#2E86E0] shadow-[0_34px_64px_-22px_rgba(10,35,64,0.5)]">

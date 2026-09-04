@@ -1,6 +1,6 @@
 <?php $w = $content['why']; $ph = $w['photos']; ?>
 <section id="why" class="scroll-mt-[90px] bg-white px-6 py-[clamp(56px,6vw,88px)]">
-  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(420px,1fr))] items-center gap-[clamp(32px,4vw,60px)]">
+  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] items-center gap-[clamp(32px,4vw,60px)]">
 
     <!-- photo stack -->
     <div class="flex min-w-0 flex-col gap-4">
@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(180px,100%),1fr))] gap-4">
         <?php foreach ($ph['small'] as $small): ?>
         <div class="relative h-[190px] overflow-hidden rounded-[14px]">
           <img src="<?= e(asset($small['src'])) ?>" alt="<?= e($small['alt']) ?>"

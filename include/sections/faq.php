@@ -6,7 +6,7 @@
 $f = $content['faq'];
 ?>
 <section id="faq" class="scroll-mt-[90px] bg-band px-6 py-[clamp(56px,6vw,88px)]">
-  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(340px,1fr))] items-start gap-[clamp(32px,4vw,70px)]">
+  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-start gap-[clamp(32px,4vw,70px)]">
 
     <div class="flex flex-col gap-4">
       <div class="eyebrow text-brand"><?= e($f['eyebrow']) ?></div>

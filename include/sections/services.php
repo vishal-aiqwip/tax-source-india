@@ -8,7 +8,7 @@
       <p class="text-[17px] leading-[1.65] text-muted"><?= e($s['intro']) ?></p>
     </div>
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[22px]">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-[22px]">
       <?php foreach ($s['groups'] as $group): ?>
       <div class="flex flex-col gap-5 rounded-[14px] border border-line bg-white px-7 py-[30px]">
         <div class="flex items-center gap-3">

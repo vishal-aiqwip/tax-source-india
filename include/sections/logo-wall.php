@@ -13,7 +13,7 @@ $w = $content['logo_wall'];
     <h2 class="text-center text-[13.5px] font-bold tracking-[0.12em] text-[#7C8B98] uppercase">
       <?= e($w['title']) ?>
     </h2>
-    <div class="grid w-full grid-cols-[repeat(auto-fit,minmax(160px,1fr))] items-center gap-6">
+    <div class="grid w-full grid-cols-[repeat(auto-fit,minmax(min(160px,100%),1fr))] items-center gap-6">
       <?php foreach ($w['marks'] as $mark): ?>
       <div class="flex h-[46px] items-center justify-center gap-2.5 text-faint">
         <?= icon($mark['icon'], 'w-[26px] h-[26px]') ?>
