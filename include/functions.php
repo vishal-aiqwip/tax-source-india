@@ -23,12 +23,31 @@ function site_origin(): string
     return ($https ? 'https://' : 'http://') . $host;
 }
 
-/** Absolute URL for a static file under the project root. */
-function asset(string $path): string
+/**
+ * URL for a static file under the project root.
+ *
+ * Appends ?v=<mtime> so the URL changes whenever the file does. Without this
+ * the 30-day Cache-Control in .htaccess is a trap: a rebuilt stylesheet keeps
+ * its old URL, so returning browsers serve the stale copy for a month.
+ *
+ * Pass $version = false for URLs handed to social scrapers and structured
+ * data, which are better left clean.
+ */
+function asset(string $path, bool $version = true): string
 {
     global $config;
 
-    return rtrim($config['base_url'], '/') . '/' . ltrim($path, '/');
+    $rel = ltrim($path, '/');
+    $url = rtrim($config['base_url'], '/') . '/' . $rel;
+
+    if ($version) {
+        $file = dirname(__DIR__) . '/' . $rel;
+        if (is_file($file) && ($mtime = filemtime($file))) {
+            $url .= '?v=' . $mtime;
+        }
+    }
+
+    return $url;
 }
 
 /**

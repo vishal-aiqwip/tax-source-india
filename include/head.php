@@ -24,7 +24,7 @@ $addr  = $config['address'];
   <meta property="og:title" content="<?= e($meta['title']) ?>">
   <meta property="og:description" content="<?= e($meta['description']) ?>">
   <meta property="og:url" content="<?= e($canon) ?>">
-  <meta property="og:image" content="<?= e(site_origin() . asset('images/og-image.jpg')) ?>">
+  <meta property="og:image" content="<?= e(site_origin() . asset('images/og-image.jpg', false)) ?>">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_IN">
@@ -50,8 +50,8 @@ $addr  = $config['address'];
     'name'     => $config['site_name'],
     'description' => $meta['description'],
     'url'      => site_origin() . page_url('home'),
-    'image'    => site_origin() . asset('images/office.webp'),
-    'logo'     => site_origin() . asset('images/logo.png'),
+    'image'    => site_origin() . asset('images/office.webp', false),
+    'logo'     => site_origin() . asset('images/logo.png', false),
     'telephone' => [$config['phone_raw'], $config['phone_alt_raw']],
     'email'    => $config['email'],
     'priceRange' => '₹₹',
