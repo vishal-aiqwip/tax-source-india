@@ -55,6 +55,39 @@ both phones, opening hours, geo, rating) emitted on the home page only.
 No `FAQPage` schema, deliberately: Google retired FAQ rich results for every
 site in May 2026, so marking up the eight Q&As would earn nothing in the SERP.
 
+### Deploying to taxsourceindia.com
+
+`base_url` is derived from where `index.php` sits, so the site works at the
+domain root with no config change. Copy everything except `node_modules/`,
+`images/src/` (optional — only needed to re-run `npm run images`) and
+`reference/`, then create `include/config.local.php` from the example for SMTP.
+
+The live host is LiteSpeed and already serves brotli, so the compression note
+below applies to local XAMPP only.
+
+**What the site being replaced gets wrong, and this fixes:**
+
+| | WordPress site | here |
+|---|---|---|
+| `http://` version | serves 200 — a second indexable copy | 301 to `https://` |
+| canonical | `http://taxsourceindia.com/` while served over https | absolute, follows the real scheme |
+| homepage title | `Home - TAX SOURCE INDIA` | states the service and the city |
+| meta description | absent | set per page |
+| `robots.txt` | `Crawl-Delay: 20`, no `Sitemap:` line | sitemap declared, no throttle |
+| local schema | none (only WordPress defaults) | `AccountingService` with address, hours, geo |
+
+`Crawl-Delay: 20` is worth understanding: Google ignores it, but Bing and
+others honour it, and 20 seconds between requests throttles crawling to a
+crawl. Do not carry it over.
+
+**Migration:** the old site has exactly two indexed URLs, `/` and
+`/privacy-policy/`. `.htaccess` 301s `/privacy-policy/` to `/privacy`; nothing
+else needs a redirect. Verified with `/about/`, `/services/`, `/contact/`,
+`/terms/`, `/blog/` and ten other common paths — all already 404.
+
+After the switch: submit `https://taxsourceindia.com/sitemap.xml` in Search
+Console, and set the preferred domain to `https://` non-www.
+
 ### One thing the server must provide
 
 Text assets are served **uncompressed** on this XAMPP install: the stylesheet
@@ -123,20 +156,25 @@ Two notes:
 Drafted content that has **not** been verified — see the header comment in
 `include/content.php`:
 
-1. **FAQ answers 2–8** state tax positions (ITR form choice, regime
+1. **`aggregateRating` is switched off** in `include/config.php`. The design
+   claimed "4.8 on Google" and a review count was filled in as a placeholder
+   that nobody verified. Google requires aggregateRating to reflect genuine,
+   on-page reviews, and publishing invented figures risks a structured-data
+   manual action — so the schema omits it until `rating_verified` is set to
+   true against the real Google Business Profile numbers.
+2. **FAQ answers 2–8** state tax positions (ITR form choice, regime
    comparison, GST timelines, entity choice, fees). A chartered accountant
    must confirm each is accurate and current.
-2. **Testimonials 2 and 3** — the design supplied only the opening clause of
+3. **Testimonials 2 and 3** — the design supplied only the opening clause of
    each alongside a real client name; the completion is invented text
    attributed to a named real person. Replace with the actual Google reviews
    or delete the two cards. Do not publish as is.
-3. **Terms of service** is still a placeholder, not legal text. (The privacy
+4. **Terms of service** is still a placeholder, not legal text. (The privacy
    policy is the practice's real document, effective 01 April 2024.)
-4. **Client logo wall** is off (`show_logo_wall => false`) because the design's
+5. **Client logo wall** is off (`show_logo_wall => false`) because the design's
    logos are generic placeholders. Turn it on once real client logos exist.
-5. Footer social links point at `#top` — add the real profile URLs in
+6. Footer social links point at `#top` — add the real profile URLs in
    `include/content.php`.
-6. The sticky mobile call bar is off (`show_call_bar => false`). The chat
+7. The sticky mobile call bar is off (`show_call_bar => false`). The chat
    button repositions itself automatically when it is toggled back on.
-7. `base_url` in `config.php` is `/tax-source-india`; set it to `''` when the
-   site moves to the domain root.
+

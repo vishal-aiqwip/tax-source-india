@@ -1,5 +1,28 @@
 RewriteEngine On
 
+# ------------------------------------------------------ canonical host + TLS
+# The WordPress site this replaces served http:// with a 200 and declared
+# http:// canonical while running over https:// — two indexable copies of every
+# page. One 301 to https settles it. Skipped on localhost, which has no TLS.
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Collapse www. onto the bare host so only one hostname is canonical.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# --------------------------------------------------------- legacy WordPress
+# /privacy-policy/ is the only indexed URL besides the home page on the site
+# this replaces. Without this it would 404 and lose whatever equity it holds.
+# The prefix is captured from REQUEST_URI rather than set with RewriteBase,
+# which cannot be made portable: this yields /privacy at the domain root and
+# /tax-source-india/privacy in a subfolder, both server-relative.
+RewriteCond %{REQUEST_URI} ^(.*)/privacy-policy/?$
+RewriteRule ^privacy-policy/?$ %1/privacy [R=301,L]
+
 # robots.txt and sitemap.xml are generated, so their URLs follow the host.
 RewriteRule ^robots\.txt$  robots.php  [L]
 RewriteRule ^sitemap\.xml$ sitemap.php [L]

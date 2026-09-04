@@ -10,7 +10,11 @@ $config = [
     // ---- identity ----
     'site_name'    => 'Tax Source India',
     'tagline'      => 'An accountant you can rely on',
-    'base_url'     => '/tax-source-india',   // path the site is served from, no trailing slash
+    // Path the site is served from, with no trailing slash. Derived from where
+    // the front controller actually sits, so it is '/tax-source-india' here and
+    // '' at the domain root — deploying needs no edit. Override in
+    // config.local.php only if the site is proxied under a different path.
+    'base_url'     => preg_replace('#/[^/]*$#', '', $_SERVER['SCRIPT_NAME'] ?? '/index.php'),
     'pretty_urls'  => true,                  // false if mod_rewrite is unavailable
 
     // ---- contact ----
@@ -35,8 +39,15 @@ $config = [
     ],
 
     'hours_label'  => 'Monday to Friday, 8:00 am &ndash; 7:00 pm &nbsp;&middot;&nbsp; Closed Saturday &amp; Sunday',
-    'rating'       => '4.8',
-    'rating_count' => 87,
+    // Google requires aggregateRating to reflect genuine reviews that are
+    // visible on the page. The 4.8 came from the design's hero badge; the
+    // review count below was a placeholder and is NOT verified, so the schema
+    // omits the rating entirely until this is switched on deliberately.
+    // Set both to the real Google Business Profile figures, then flip the flag.
+    // Publishing invented review data risks a structured-data manual action.
+    'rating'        => '4.8',
+    'rating_count'  => null,
+    'rating_verified' => false,
 
     // ---- feature flags ----
     // The logo wall ships with generic placeholder marks. Turn this on once

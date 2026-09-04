@@ -8,8 +8,8 @@
  */
 
 return [
-    // On the live domain the site sits at the web root:
-    // 'base_url' => '',
+    // base_url is detected from where index.php sits, so it needs no entry
+    // here for either localhost/tax-source-india or the domain root.
 
     'mail' => [
         'enabled'    => true,

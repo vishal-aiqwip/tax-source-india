@@ -74,13 +74,18 @@ $addr  = $config['address'];
         'opens'     => '08:00',
         'closes'    => '19:00',
     ]],
-    'aggregateRating' => [
-        '@type'       => 'AggregateRating',
-        'ratingValue' => $config['rating'],
-        'reviewCount' => $config['rating_count'],
-    ],
     'areaServed' => ['@type' => 'City', 'name' => 'Bengaluru'],
-], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
+]
+// Only emitted once the figures are confirmed against the real Google
+// Business Profile — see the note in config.php.
++ (!empty($config['rating_verified']) && $config['rating_count']
+    ? ['aggregateRating' => [
+          '@type'       => 'AggregateRating',
+          'ratingValue' => $config['rating'],
+          'reviewCount' => $config['rating_count'],
+      ]]
+    : []),
+JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
   </script>
 <?php endif; ?>
 </head>
