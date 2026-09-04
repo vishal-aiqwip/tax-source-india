@@ -41,6 +41,10 @@ return [
             'title' => 'Terms of service — Tax Source India',
             'description' => 'The terms on which Tax Source India provides accounting, tax and compliance services.',
         ],
+        'thank-you' => [
+            'title' => 'Thank you — Tax Source India',
+            'description' => 'We have your enquiry and will call back the same working day.',
+        ],
         '404' => [
             'title' => 'Page not found — Tax Source India',
             'description' => 'The page you were looking for is not here.',

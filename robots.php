@@ -25,7 +25,7 @@ Disallow: <?= $base ?>/data/
 Disallow: <?= $base ?>/reference/
 Disallow: <?= $base ?>/PHPMailer/
 
-# Thank-you state is the home page with a query string — no need to index it.
-Disallow: /*?sent=
+# Conversion endpoint, not content.
+Disallow: <?= $base ?>/thank-you
 
 Sitemap: <?= site_origin() . $base ?>/sitemap.xml

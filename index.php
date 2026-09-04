@@ -14,7 +14,7 @@ require __DIR__ . '/include/functions.php';
 require __DIR__ . '/include/form-handler.php';
 
 // Whitelist. $_GET is never interpolated into a path.
-$pages = ['home', 'privacy', 'terms'];
+$pages = ['home', 'privacy', 'terms', 'thank-you'];
 $page  = (string) ($_GET['page'] ?? 'home');
 
 if (!in_array($page, $pages, true)) {

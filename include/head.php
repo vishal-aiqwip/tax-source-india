@@ -5,7 +5,7 @@
  */
 
 $meta  = $content['meta'][$page] ?? $content['meta']['home'];
-$canon = site_origin() . page_url($page === '404' ? 'home' : $page);
+$canon = site_origin() . page_url(in_array($page, ['404', 'thank-you'], true) ? 'home' : $page);
 $addr  = $config['address'];
 ?>
 <head>
@@ -15,8 +15,14 @@ $addr  = $config['address'];
   <title><?= e($meta['title']) ?></title>
   <meta name="description" content="<?= e($meta['description']) ?>">
   <link rel="canonical" href="<?= e($canon) ?>">
-  <?php if ($page === '404'): ?>
+  <?php if ($page === '404' || $page === 'thank-you'): ?>
   <meta name="robots" content="noindex">
+  <?php endif; ?>
+  <?php if ($page === 'thank-you'): ?>
+  <!-- Bounce back after 2 seconds. A meta refresh rather than a script so it
+       still happens with JavaScript off; the page also offers a link out so
+       the wait is never mandatory. -->
+  <meta http-equiv="refresh" content="2;url=<?= e(page_url('home')) ?>">
   <?php endif; ?>
 
   <meta property="og:type" content="website">

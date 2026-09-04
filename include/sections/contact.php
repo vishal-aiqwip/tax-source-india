@@ -7,9 +7,34 @@
  * previous values arrive via the $form_errors / $form_old globals.
  */
 $c     = $content['contact'];
-$sent  = isset($_GET['sent']);
 $addr  = $config['address'];
 $field = 'h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink';
+
+/**
+ * One text input with its label and a persistent error slot.
+ *
+ * The <p> is always in the DOM (hidden when empty) so the server and the
+ * client-side check in site.js write to the same element, rather than the
+ * script having to invent markup the server also knows how to produce.
+ */
+$input_row = static function (string $name, string $label, array $o = []) use ($field): void {
+    $id  = 'f-' . $name;
+    $eid = 'e-' . $name;
+    $err = field_error($name);
+    ?>
+    <div class="flex flex-col gap-[7px]">
+      <label for="<?= $id ?>" class="text-[13.5px] font-semibold text-body"><?= e($label) ?></label>
+      <input type="<?= e($o['type'] ?? 'text') ?>" id="<?= $id ?>" name="<?= e($name) ?>"
+             <?= !empty($o['required']) ? 'required' : '' ?>
+             placeholder="<?= e($o['placeholder'] ?? '') ?>"
+             value="<?= e(old($name)) ?>"
+             autocomplete="<?= e($o['autocomplete'] ?? 'off') ?>"
+             aria-describedby="<?= $eid ?>"<?= $err ? ' aria-invalid="true"' : '' ?>
+             class="<?= $field ?> <?= $err ? 'border-[#D98A8A]' : 'border-line-input' ?>">
+      <p id="<?= $eid ?>" data-error-for="<?= e($name) ?>"
+         class="text-[13px] text-[#8C2B2B]"<?= $err ? '' : ' hidden' ?>><?= e($err) ?></p>
+    </div>
+<?php };
 ?>
 <section id="contact" class="scroll-mt-[90px] bg-white px-6 py-[clamp(56px,6vw,88px)]">
   <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] items-start gap-[clamp(32px,4vw,60px)]">
@@ -72,69 +97,36 @@ $field = 'h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink';
         <p class="text-[15px] leading-relaxed text-muted"><?= e($c['form']['sub']) ?></p>
       </div>
 
-      <?php if ($sent): ?>
-      <div class="flex flex-col items-start gap-3 rounded-[10px] bg-brand-tint p-6" role="status">
-        <?= icon('check-circle', 'w-[26px] h-[26px] text-brand', ['stroke-width' => '2.2']) ?>
-        <div class="font-display text-[19px] font-bold tracking-[-0.02em] text-navy"><?= e($c['sent']['title']) ?></div>
-        <p class="text-[15px] leading-relaxed text-body">
-          <?= e($c['sent']['body']) ?>
-          <a href="<?= e(tel_url($config['phone_raw'])) ?>" class="font-semibold"><?= e($config['phone']) ?></a>.
-        </p>
-        <a href="<?= e(page_url('home')) ?>#contact" class="text-[15px] font-bold text-brand hover:text-brand-dark">
-          <?= e($c['sent']['again']) ?>
-        </a>
-      </div>
-
-      <?php else: ?>
-      <?php if (!empty($form_errors)): ?>
-      <div class="rounded-[10px] border border-[#F0C9C9] bg-[#FDF1F1] px-4 py-3.5 text-[14.5px] text-[#8C2B2B]" role="alert">
+      <div data-form-alert role="alert"
+           class="rounded-[10px] border border-[#F0C9C9] bg-[#FDF1F1] px-4 py-3.5 text-[14.5px] text-[#8C2B2B]"
+           <?= empty($form_errors) ? 'hidden' : '' ?>>
         Please check the highlighted fields and try again.
       </div>
-      <?php endif; ?>
 
-      <form method="post" action="<?= e(page_url('home')) ?>#contact" class="flex flex-col gap-5" novalidate>
+      <!-- novalidate suppresses the browser's own bubbles so the messages match
+           the site; site.js checks the same rules the server does and blocks
+           submission, so an incomplete form no longer round-trips and reloads.
+           The server-side validation in form-handler.php remains the authority
+           and is what runs when the script does not. -->
+      <form method="post" action="<?= e(page_url('home')) ?>#contact" class="flex flex-col gap-5"
+            data-enquiry-form novalidate>
         <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
         <input type="hidden" name="form_time" value="<?= time() ?>">
-        <!-- honeypot: hidden from people, tempting to bots -->
+        <!-- Honeypot. Named hp_ref rather than "website", and with no visible
+             label: "website" sits in Chrome's autofill heuristics, so the
+             browser could fill it for a real visitor and get them rejected as
+             a bot. autocomplete="off" alone is not reliably honoured. -->
         <div class="absolute -left-[9999px]" aria-hidden="true">
-          <label for="website">Website</label>
-          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          <input type="text" id="hp_ref" name="hp_ref" tabindex="-1"
+                 autocomplete="off" aria-hidden="true">
         </div>
 
         <div class="grid grid-cols-[repeat(auto-fit,minmax(min(140px,100%),1fr))] gap-3.5">
-          <div class="flex flex-col gap-[7px]">
-            <label for="f-name" class="text-[13.5px] font-semibold text-body">Your name</label>
-            <input type="text" id="f-name" name="name" required placeholder="Full name"
-                   value="<?= e(old('name')) ?>" autocomplete="name"
-                   <?= field_error('name') ? 'aria-describedby="e-name" aria-invalid="true"' : '' ?>
-                   class="<?= $field ?> <?= field_error('name') ? 'border-[#D98A8A]' : 'border-line-input' ?>">
-            <?php if ($err = field_error('name')): ?>
-            <p id="e-name" class="text-[13px] text-[#8C2B2B]"><?= e($err) ?></p>
-            <?php endif; ?>
-          </div>
-
-          <div class="flex flex-col gap-[7px]">
-            <label for="f-phone" class="text-[13.5px] font-semibold text-body">Phone</label>
-            <input type="tel" id="f-phone" name="phone" required placeholder="+91"
-                   value="<?= e(old('phone')) ?>" autocomplete="tel"
-                   <?= field_error('phone') ? 'aria-describedby="e-phone" aria-invalid="true"' : '' ?>
-                   class="<?= $field ?> <?= field_error('phone') ? 'border-[#D98A8A]' : 'border-line-input' ?>">
-            <?php if ($err = field_error('phone')): ?>
-            <p id="e-phone" class="text-[13px] text-[#8C2B2B]"><?= e($err) ?></p>
-            <?php endif; ?>
-          </div>
+          <?php $input_row('name', 'Your name', ['required' => true, 'placeholder' => 'Full name', 'autocomplete' => 'name']); ?>
+          <?php $input_row('phone', 'Phone', ['type' => 'tel', 'required' => true, 'placeholder' => '+91', 'autocomplete' => 'tel']); ?>
         </div>
 
-        <div class="flex flex-col gap-[7px]">
-          <label for="f-email" class="text-[13.5px] font-semibold text-body">Email</label>
-          <input type="email" id="f-email" name="email" placeholder="you@example.com"
-                 value="<?= e(old('email')) ?>" autocomplete="email"
-                 <?= field_error('email') ? 'aria-describedby="e-email" aria-invalid="true"' : '' ?>
-                 class="<?= $field ?> <?= field_error('email') ? 'border-[#D98A8A]' : 'border-line-input' ?>">
-          <?php if ($err = field_error('email')): ?>
-          <p id="e-email" class="text-[13px] text-[#8C2B2B]"><?= e($err) ?></p>
-          <?php endif; ?>
-        </div>
+        <?php $input_row('email', 'Email', ['type' => 'email', 'placeholder' => 'you@example.com', 'autocomplete' => 'email']); ?>
 
         <!-- Progressive enhancement. The <select> is the real control and the
              source of truth: it submits the value and is fully usable if the
@@ -196,7 +188,6 @@ $field = 'h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink';
           <span class="text-[13.5px] text-muted-2"><?= e($c['form']['privacy']) ?></span>
         </div>
       </form>
-      <?php endif; ?>
     </div>
   </div>
 </section>

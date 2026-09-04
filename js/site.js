@@ -224,6 +224,93 @@
     paint();
   });
 
+  /* ------------------------------------------------------- enquiry form */
+  /* Blocks submission and shows inline errors instead of letting an
+     incomplete form post, redirect and reload the page.
+
+     These rules deliberately mirror form-handler.php. The server stays the
+     authority — it is what validates when this script does not run, and it
+     never trusts anything decided here. Keep the two in step. */
+  var enquiry = document.querySelector('[data-enquiry-form]');
+  if (enquiry) {
+    var alertBox = document.querySelector('[data-form-alert]');
+
+    var RULES = {
+      name: function (v) {
+        if (!v) return 'Please tell us your name.';
+        if (v.length < 2 || v.length > 80) return 'Please enter your name (2 to 80 characters).';
+        return null;
+      },
+      phone: function (v) {
+        if (!v) return 'Please give us a number to call back on.';
+        var digits = v.replace(/\D/g, '');
+        if (digits.length < 10 || digits.length > 13) return 'Please enter a valid phone number.';
+        return null;
+      },
+      email: function (v) {
+        // Optional, but must look like an address when given.
+        if (!v) return null;
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? null : 'That email address does not look right.';
+      }
+    };
+
+    var fields = Object.keys(RULES)
+      .map(function (n) { return enquiry.querySelector('[name="' + n + '"]'); })
+      .filter(Boolean);
+
+    function slotFor(input) {
+      return enquiry.querySelector('[data-error-for="' + input.name + '"]');
+    }
+
+    function paintField(input, message) {
+      var slot = slotFor(input);
+      if (slot) {
+        slot.textContent = message || '';
+        slot.hidden = !message;
+      }
+      input.classList.toggle('border-[#D98A8A]', !!message);
+      input.classList.toggle('border-line-input', !message);
+      if (message) input.setAttribute('aria-invalid', 'true');
+      else input.removeAttribute('aria-invalid');
+    }
+
+    function check(input) {
+      var message = RULES[input.name](input.value.trim());
+      paintField(input, message);
+      return message;
+    }
+
+    enquiry.addEventListener('submit', function (event) {
+      var firstBad = null;
+      fields.forEach(function (input) {
+        if (check(input) && !firstBad) firstBad = input;
+      });
+
+      if (!firstBad) return;   // let it post
+
+      event.preventDefault();
+      if (alertBox) alertBox.hidden = false;
+      // Bring the field into view without the jump a page reload caused.
+      firstBad.focus({ preventScroll: true });
+      firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    fields.forEach(function (input) {
+      // Clear a message as soon as the value satisfies the rule, but do not
+      // start complaining about a field the visitor has not finished yet.
+      input.addEventListener('input', function () {
+        if (input.hasAttribute('aria-invalid')) {
+          if (!check(input) && alertBox && !fields.some(function (f) { return f.hasAttribute('aria-invalid'); })) {
+            alertBox.hidden = true;
+          }
+        }
+      });
+      input.addEventListener('blur', function () {
+        if (input.value.trim() !== '' || input.hasAttribute('aria-invalid')) check(input);
+      });
+    });
+  }
+
   /* ------------------------------------------------------------- escape */
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape') return;

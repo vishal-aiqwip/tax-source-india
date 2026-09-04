@@ -57,12 +57,43 @@ if (!hash_equals($_SESSION['csrf_token'] ?? '', $post('csrf_token'))) {
 }
 
 // ---- spam traps ----------------------------------------------------------
-// A filled honeypot, or a form submitted implausibly fast, is a bot.
-// Both are answered with the success page so the bot learns nothing.
-$elapsed = time() - (int) $post('form_time');
-if ($post('website') !== '' || $elapsed < 3) {
-    error_log('[tax-source-india] enquiry rejected as spam (honeypot/timing)');
-    header('Location: ' . page_url('home', ['sent' => 1]) . '#contact', true, 303);
+// A filled honeypot, or a form submitted implausibly fast, is a bot. Both are
+// answered with the success page so the bot learns nothing.
+//
+// These are heuristics and can be wrong, so a rejected submission is written
+// to its own log rather than dropped: a false positive would otherwise lose a
+// real enquiry with no way to recover it. The log also records which trap
+// fired, so a pattern of false positives is diagnosable instead of guesswork.
+$elapsed  = time() - (int) $post('form_time');
+$honeypot = $post('hp_ref') !== '';
+$tooFast  = $elapsed < 3;
+
+if ($honeypot || $tooFast) {
+    $reason = $honeypot
+        ? 'honeypot filled (value: ' . substr($post('hp_ref'), 0, 40) . ')'
+        : 'submitted after ' . $elapsed . 's, under the 3s minimum';
+
+    error_log('[tax-source-india] enquiry rejected: ' . $reason);
+
+    $rejected = dirname($config['enquiry_log']) . '/rejected.csv';
+    if ($handle = @fopen($rejected, 'a')) {
+        if (flock($handle, LOCK_EX)) {
+            if (filesize($rejected) === 0) {
+                fputcsv($handle, ['rejected_at', 'reason', 'name', 'phone', 'email', 'topic', 'details', 'ip']);
+            }
+            fputcsv($handle, [
+                date('Y-m-d H:i:s'), $reason,
+                $values['name'], $values['phone'], $values['email'],
+                $values['topic'], $values['details'],
+                (string) ($_SERVER['REMOTE_ADDR'] ?? 'unknown'),
+            ]);
+            fflush($handle);
+            flock($handle, LOCK_UN);
+        }
+        fclose($handle);
+    }
+
+    header('Location: ' . page_url('thank-you'), true, 303);
     exit;
 }
 
@@ -153,5 +184,7 @@ $log_enquiry($record);
 require __DIR__ . '/mailer.php';
 send_enquiry($record);   // failures are logged inside; the visitor still gets the thank-you
 
-header('Location: ' . page_url('home', ['sent' => 1]) . '#contact', true, 303);
+// Post-redirect-get onto a dedicated page: a reload cannot resubmit, and the
+// visitor gets a real confirmation rather than a panel inside the form.
+header('Location: ' . page_url('thank-you'), true, 303);
 exit;
