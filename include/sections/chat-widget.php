@@ -9,10 +9,14 @@ $chat_bottom = !empty($config['show_call_bar']) ? 'bottom-[82px]' : 'bottom-[26p
 ?>
 <div class="fixed right-[22px] <?= $chat_bottom ?> z-60 flex flex-col items-end gap-3 nav:bottom-[26px]">
 
+  <!-- An explicit height is what gives the message area room: it is the
+       flex-grow child, so without one the panel collapses to the height of
+       whatever messages it currently holds. max-h keeps it clear of the
+       toggle button below and the viewport edge above on short screens. -->
   <div id="chat-panel" hidden
-       class="flex max-h-[calc(100vh-160px)] w-[356px] max-w-[calc(100vw-44px)] min-h-0 flex-col overflow-hidden rounded-[20px] bg-linear-to-b from-brand to-[#2E86E0] shadow-[0_34px_64px_-22px_rgba(10,35,64,0.5)]">
+       class="flex h-[540px] max-h-[calc(100vh-130px)] w-[390px] max-w-[calc(100vw-44px)] min-h-0 flex-col overflow-hidden rounded-[20px] bg-linear-to-b from-brand to-[#2E86E0] shadow-[0_34px_64px_-22px_rgba(10,35,64,0.5)]">
 
-    <div class="flex min-h-0 shrink flex-col gap-[22px] overflow-hidden px-5 pt-[18px] pb-[26px]">
+    <div class="flex min-h-0 shrink flex-col gap-[22px] overflow-hidden px-5 pt-[18px] pb-[26px] [@media(height<560px)]:gap-3 [@media(height<560px)]:pb-4">
       <div class="flex items-start justify-between gap-4">
         <div class="font-display text-base font-bold tracking-[-0.01em] text-white">
           <?= e($config['site_name']) ?>
@@ -22,7 +26,10 @@ $chat_bottom = !empty($config['show_call_bar']) ? 'bottom-[82px]' : 'bottom-[26p
           <?= icon('close', 'w-[18px] h-[18px]') ?>
         </button>
       </div>
-      <div class="flex flex-col gap-2.5">
+      <!-- Decorative greeting. On a short viewport (landscape phones) the
+           panel is height-capped, and this block would leave the message
+           area unusable, so it goes and the title bar carries the header. -->
+      <div class="flex flex-col gap-2.5 [@media(height<560px)]:hidden">
         <?= icon('wave', 'w-[26px] h-[26px] text-[#CFE4FA]', ['stroke-width' => '1.7']) ?>
         <div class="font-display text-[27px] leading-tight font-bold tracking-[-0.02em] text-white">
           <?= e($content['chat']['greeting']) ?>
