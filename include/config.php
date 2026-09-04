@@ -54,7 +54,7 @@ $config = [
     // real client logos are supplied and added to images/.
     'show_logo_wall' => false,
     'show_call_bar'  => false,  // sticky mobile call/WhatsApp bar
-    'show_chat'      => true,   // floating chat button (hands off to WhatsApp)
+    'show_chat'      => false,  // floating chat button (hands off to WhatsApp)
 
     // ---- mail ----
     // Overridden by config.local.php on any real deployment.
