@@ -9,7 +9,11 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 <?php require __DIR__ . '/head.php'; ?>
-<body class="bg-page font-body text-body antialiased overflow-x-hidden">
+<!-- No overflow-x-hidden here: it forces overflow-y to auto, which turns body
+     into a scroll container and stops position:sticky working in descendants.
+     It was a guard against the source design's horizontal overflow, which is
+     fixed properly at the grid level (min(Npx,100%) on every auto-fit track). -->
+<body class="bg-page font-body text-body antialiased">
 
 <a href="#main"
    class="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:top-3 focus:left-3 focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-navy focus:shadow-lg">

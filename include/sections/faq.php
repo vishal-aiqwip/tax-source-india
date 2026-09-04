@@ -6,13 +6,16 @@
 $f = $content['faq'];
 ?>
 <section id="faq" class="scroll-mt-[90px] bg-band px-6 py-[clamp(56px,6vw,88px)]">
-  <div class="mx-auto grid max-w-[1160px] grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-start gap-[clamp(32px,4vw,70px)]">
+  <!-- Flex, not an auto-fit grid: this section has exactly two children, so
+       the track count is not something to discover. It also means one
+       breakpoint governs both the columns and the sticky below, instead of
+       md: having to approximate wherever auto-fit happened to wrap. -->
+  <div class="mx-auto flex max-w-[1160px] flex-col items-start gap-[clamp(32px,4vw,70px)] md:flex-row">
 
-    <!-- Sticky once the grid is two columns, so the heading and the WhatsApp
-         card stay in view while the answers are read. top-[100px] clears the
+    <!-- Sticky from md: up, where the columns appear. top-[100px] clears the
          84px sticky header. Not sticky in one column, where it sits above the
-         list and would pin itself over the questions. -->
-    <div class="flex flex-col gap-4 md:sticky md:top-[100px]">
+         list and would pin itself over the questions being read. -->
+    <div class="flex w-full min-w-0 flex-col gap-4 md:sticky md:top-[100px] md:flex-1">
       <div class="eyebrow text-brand"><?= e($f['eyebrow']) ?></div>
       <h2 class="text-[clamp(26px,3.2vw,38px)] leading-[1.12] font-extrabold"><?= e($f['heading']) ?></h2>
       <p class="text-[16.5px] leading-[1.65] text-muted"><?= e($f['intro']) ?></p>
@@ -31,7 +34,7 @@ $f = $content['faq'];
       </div>
     </div>
 
-    <div class="flex flex-col gap-3">
+    <div class="flex w-full min-w-0 flex-col gap-3 md:flex-1">
       <?php foreach ($f['items'] as $i => $item): ?>
       <details name="faq" class="group rounded-[14px] border border-line bg-white px-[26px] py-6"
                <?= $i === 0 ? 'open' : '' ?>>
