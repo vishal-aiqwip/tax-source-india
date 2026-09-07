@@ -495,6 +495,32 @@ Still required regardless of the primitive:
 
 ## 8. Images
 
+> **SUPERSEDED — the site now uses `next/image`.** The reasoning below is kept
+> because it explains the trade being made. What changed: every `<img>` is now
+> `next/image` with explicit `width`/`height` and a `sizes` hint; the hero and
+> the header logo carry `priority` (preloaded, `fetchpriority="high"`), and
+> everything else lazy-loads. `images.minimumCacheTTL` is raised to 30 days —
+> these are fixed assets that only change when someone re-runs `bun run images`.
+>
+> Measured: the hero drops from 79.7 KB to **44.7 KB at 640w** (-44%), though
+> only to 74.6 KB at 1080w. AVIF is *not* enabled (Next defaults to WebP only);
+> turning it on would compress further at the cost of a slower first encode.
+>
+> **Three deployment consequences:**
+>
+> 1. **`sharp` is now a runtime dependency**, not a devDependency. The VPS needs
+>    it installed and working, or image optimisation fails at request time
+>    rather than at build time.
+> 2. **`.next/cache` must be writable.** If the systemd unit uses
+>    `ProtectSystem=strict`, add it to `ReadWritePaths` — otherwise every image
+>    500s in production while the build looked perfectly healthy.
+> 3. Images now come from `/_next/image?url=…`, so the `/images/*`
+>    `Cache-Control` header only covers the originals metadata references
+>    directly: og-image.jpg, favicon-48.png, apple-touch-icon.png.
+>
+> The class-name parity check will now show these six images as differences.
+
+
 **Keep the sharp script. Do not use `next/image`.** There are eight images, all fixed, already
 hand-tuned in `tools/optimise-images.mjs` to exactly 2× their CSS slot with a deliberate
 PNG-vs-WebP split. `next/image` would add a runtime layer and an on-disk cache for zero

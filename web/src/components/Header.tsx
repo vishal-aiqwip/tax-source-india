@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HeaderChrome } from "@/components/HeaderChrome";
 import { Icon } from "@/components/Icon";
 import { SiteLink } from "@/components/SiteLink";
@@ -45,12 +46,13 @@ export function Header({ page }: { page: PageKey }) {
         href={`${ROUTES.home}#top`}
         className="flex shrink-0 items-center"
       >
-        {/* biome-ignore lint/performance/noImgElement: next/image is deliberately unused — see §8 of docs/nextjs-migration-plan.md */}
-        <img
+        {/* In the header on every page, so it loads eagerly rather than lazily. */}
+        <Image
           src="/images/logo.png"
           alt={site.name}
-          width="96"
-          height="44"
+          width={96}
+          height={44}
+          priority
           className="block h-11 w-auto"
         />
       </SiteLink>

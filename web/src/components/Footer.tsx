@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Icon } from "@/components/Icon";
 import { SiteLink } from "@/components/SiteLink";
 import { site } from "@/lib/config";
@@ -70,13 +71,11 @@ export function Footer({ page }: { page: PageKey }) {
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-10 border-b border-navy-line pb-11">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col items-start gap-3">
-              {/* biome-ignore lint/performance/noImgElement: next/image is deliberately unused — see §8 of docs/nextjs-migration-plan.md */}
-              <img
+              <Image
                 src="/images/logo-mark.png"
                 alt={site.name}
-                width="52"
-                height="52"
-                loading="lazy"
+                width={52}
+                height={52}
                 className="block h-[52px] w-[52px] rounded-xl"
               />
               <div className="text-xs font-semibold tracking-[0.08em] text-on-dark-2 uppercase">

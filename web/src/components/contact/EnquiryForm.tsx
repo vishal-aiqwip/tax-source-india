@@ -8,7 +8,7 @@ import { type CheckedField, checkField } from "@/lib/enquiry/schema";
 import { EMPTY_STATE, type EnquiryField } from "@/lib/enquiry/types";
 
 const FIELD_CLASS =
-  "h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink";
+  "h-11 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink";
 
 interface EnquiryFormProps {
   submitLabel: string;
@@ -199,7 +199,7 @@ function SubmitButton({ label }: { label: string }) {
     <button
       type="submit"
       disabled={pending}
-      className="flex h-[54px] cursor-pointer items-center justify-center rounded-lg border-none bg-brand text-base font-semibold text-white shadow-[0_8px_20px_-10px_rgba(20,102,190,0.65)] transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-70"
+      className="flex h-12 cursor-pointer items-center justify-center rounded-lg border-none bg-brand text-base font-semibold text-white shadow-[0_8px_20px_-10px_rgba(20,102,190,0.65)] transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-70"
     >
       {pending ? "Sending…" : label}
     </button>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Icon } from "@/components/Icon";
 import type { IconName } from "@/lib/icons";
 
@@ -69,13 +70,12 @@ export function WhyUs() {
         {/* photo stack */}
         <div className="flex min-w-0 flex-col gap-4">
           <div className="relative overflow-hidden rounded-[14px] shadow-[0_24px_48px_-28px_rgba(10,35,64,0.45)]">
-            {/* biome-ignore lint/performance/noImgElement: next/image is deliberately unused — see §8 of docs/nextjs-migration-plan.md */}
-            <img
+            <Image
               src={MAIN_PHOTO.src}
               alt={MAIN_PHOTO.alt}
               width={MAIN_PHOTO.w}
               height={MAIN_PHOTO.h}
-              loading="lazy"
+              sizes="(max-width: 900px) 100vw, 550px"
               className="block h-auto w-full"
             />
             <div className="absolute inset-x-0 bottom-0 bg-linear-to-b from-transparent to-navy/80 px-[22px] pt-10 pb-[18px]">
@@ -94,13 +94,12 @@ export function WhyUs() {
                 key={small.src}
                 className="relative h-[190px] overflow-hidden rounded-[14px]"
               >
-                {/* biome-ignore lint/performance/noImgElement: next/image is deliberately unused — see §8 of docs/nextjs-migration-plan.md */}
-                <img
+                <Image
                   src={small.src}
                   alt={small.alt}
                   width={small.w}
                   height={small.h}
-                  loading="lazy"
+                  sizes="(max-width: 900px) 50vw, 270px"
                   className="block h-full w-full object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-linear-to-b from-transparent to-navy/[0.78] px-3.5 pt-7 pb-3">

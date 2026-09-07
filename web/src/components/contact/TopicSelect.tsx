@@ -37,7 +37,7 @@ export function TopicSelect({ defaultValue }: { defaultValue: string }) {
   useEffect(() => setEnhanced(true), []);
 
   const field =
-    "h-12 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink";
+    "h-11 w-full rounded-lg border bg-white px-3.5 text-[15px] text-ink";
 
   return (
     <div className="relative flex flex-col gap-[7px]">
@@ -72,7 +72,7 @@ export function TopicSelect({ defaultValue }: { defaultValue: string }) {
           <SelectTrigger
             id="f-topic-button"
             aria-labelledby="f-topic-label f-topic-button"
-            className="flex !h-12 w-full cursor-pointer items-center justify-between gap-3 rounded-lg border border-line-input bg-white px-3.5 text-left text-[15px] text-ink transition-colors hover:border-brand data-[state=open]:border-brand"
+            className="flex !h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-lg border border-line-input bg-white px-3.5 text-left text-[15px] text-ink transition-colors hover:border-brand data-[state=open]:border-brand"
           >
             <SelectValue />
           </SelectTrigger>

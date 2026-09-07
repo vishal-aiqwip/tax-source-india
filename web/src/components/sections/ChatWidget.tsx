@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Icon } from "@/components/Icon";
 import { ChatWidgetClient } from "@/components/sections/ChatWidgetClient";
 import { site } from "@/lib/config";
@@ -46,13 +47,11 @@ export function ChatWidget() {
       }
       firstMessage={
         <div className="flex items-start gap-[11px]">
-          {/* biome-ignore lint/performance/noImgElement: next/image is deliberately unused — see §8 of docs/nextjs-migration-plan.md */}
-          <img
+          <Image
             src="/images/logo-mark.png"
             alt=""
-            width="34"
-            height="34"
-            loading="lazy"
+            width={34}
+            height={34}
             className="block h-[34px] w-[34px] shrink-0 rounded-full"
           />
           <div className="rounded-xl border border-line-soft bg-white px-3.5 py-3 shadow-[0_6px_14px_-10px_rgba(10,35,64,0.35)]">

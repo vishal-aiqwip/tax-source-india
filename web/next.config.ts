@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
   compress: false,
   poweredByHeader: false,
 
+  images: {
+    // Next 16 defaults this to 4 hours. These eight images are fixed assets
+    // that only change when someone re-runs `bun run images`, so caching the
+    // optimised variants for 30 days costs nothing and saves the re-encode.
+    minimumCacheTTL: 2592000,
+  },
+
   experimental: {
     serverActions: {
       // Security-relevant: Next validates Origin against these on every
@@ -41,8 +48,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Replaces the asset() helper's ?v=<mtime> cache-buster, which has no
-        // equivalent here. Same 30-day window the .htaccess settled on.
+        // Covers the originals served directly rather than through
+        // next/image — og-image.jpg, favicon-48.png, apple-touch-icon.png,
+        // which metadata references by URL. Replaces the asset() helper's
+        // ?v=<mtime> cache-buster with the same 30-day window the .htaccess
+        // settled on. next/image's own output is cached per minimumCacheTTL.
         source: "/images/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=2592000" }],
       },

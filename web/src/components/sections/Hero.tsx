@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Fragment } from "react";
 import { Icon } from "@/components/Icon";
 import { waHref } from "@/lib/urls";
@@ -87,7 +89,7 @@ export function Hero() {
               and the primary sits at its natural width, so the two never stack
               and eat space above the fold. */}
           <div className="flex flex-nowrap items-stretch gap-2.5 sm:flex-wrap sm:items-center sm:gap-3.5">
-            <a
+            <Link
               href="#contact"
               className="btn-primary w-fit px-4 text-center sm:px-[26px]"
             >
@@ -97,8 +99,8 @@ export function Hero() {
                 className="w-[18px] h-[18px] shrink-0"
                 strokeWidth={2.2}
               />
-            </a>
-            <a
+            </Link>
+            <Link
               href={waHref()}
               target="_blank"
               rel="noopener"
@@ -107,7 +109,7 @@ export function Hero() {
             >
               <Icon name="chat" className="w-[18px] h-[18px] shrink-0" />
               <span className="hidden sm:inline">WhatsApp us</span>
-            </a>
+            </Link>
           </div>
 
           <ul className="flex flex-col gap-2.5 pt-1">
@@ -152,13 +154,15 @@ export function Hero() {
           <div className="pointer-events-none absolute top-2.5 -right-10 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(14,124,90,0.13)_0%,rgba(14,124,90,0.04)_55%,rgba(14,124,90,0)_72%)]" />
           <div className="pointer-events-none absolute top-[34px] right-0 h-[340px] w-[340px] rounded-full border border-dashed border-[#CBDAEA]" />
 
-          {/* biome-ignore lint/performance/noImgElement: next/image is deliberately unused — see §8 of docs/nextjs-migration-plan.md */}
-          <img
+          {/* The LCP element. `priority` preloads it and sets
+              fetchpriority="high", replacing the attribute the PHP set by hand. */}
+          <Image
             src="/images/hero.webp"
             alt="Tax Source India accountant with client documents"
-            width="880"
-            height="853"
-            fetchPriority="high"
+            width={880}
+            height={853}
+            priority
+            sizes="(max-width: 460px) 100vw, 420px"
             className="relative block h-auto w-full max-w-[420px]"
           />
 
