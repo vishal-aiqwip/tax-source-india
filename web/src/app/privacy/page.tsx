@@ -5,6 +5,7 @@ import { SiteLink } from "@/components/SiteLink";
 import { site } from "@/lib/config";
 import { pageMetadata } from "@/lib/seo";
 import { ROUTES, telHref } from "@/lib/urls";
+import Link from "next/link";
 
 /**
  * Privacy policy — supplied by the practice, effective 01 April 2024.
@@ -114,12 +115,13 @@ export default function PrivacyPage() {
                 personal information and your right to privacy. This Privacy
                 Policy explains how we collect, use, disclose, and safeguard
                 your information when you visit our website{" "}
-                <a
+                <Link
                   href="https://www.taxsourceindia.com"
                   className="font-semibold text-brand hover:text-brand-dark"
                 >
                   www.taxsourceindia.com
-                </a>{" "}
+                </Link>
+                {" "}
                 (the “Site”). Please read this policy carefully to understand
                 our views and practices regarding your personal data and how we
                 will treat it.

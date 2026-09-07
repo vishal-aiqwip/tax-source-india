@@ -67,11 +67,12 @@ export function Header({ page }: { page: PageKey }) {
           <SiteLink
             key={item.href}
             href={homeAnchor(item.href, page)}
-            className={`text-[15px] whitespace-nowrap ${
-              item.strong
-                ? "font-semibold text-navy"
-                : "font-medium text-[#556B80] hover:text-navy"
-            }`}
+            className={"text-[15px] font-medium whitespace-nowrap text-[#556B80] hover:text-navy"}
+            // className={`text-[15px] whitespace-nowrap ${
+            //   item.strong
+            //     ? "font-semibold text-navy"
+            //     : "font-medium text-[#556B80] hover:text-navy"
+            // }`}
           >
             {item.label}
           </SiteLink>
