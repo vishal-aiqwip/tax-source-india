@@ -135,6 +135,50 @@ Also relevant but not yet load-bearing: async `params` for `icon`/`opengraph-ima
   author and that `shadcn add` overwrites, so patching them just defers the noise to the
   next component added.
 
+## Build status — steps 0-10 complete
+
+Ported and verified. `bun run lint`, `bun run typecheck`, `bun run verify:enquiry`
+and `bun run build` all pass; all seven routes prerender.
+
+**Two decisions changed during the build, at the user's direction:**
+
+1. **shadcn/ui on Radix** replaces the hand-rolled ARIA listbox (§7).
+2. **Copy is inlined into each component**, not centralised in a `content.ts`.
+   This retired the content-parity script — but it passed on its final run
+   before the move, so the strings were verified correct and the inlining was
+   a mechanical relocation. The `REVIEW BEFORE GOING LIVE` warnings moved with
+   the content they describe: unverified FAQ answers now sit in
+   `sections/Faq.tsx`, the invented testimonials in `sections/Testimonials.tsx`,
+   and the placeholder terms in `app/terms/page.tsx`.
+
+### Verification results against the running PHP site
+
+| Check | Result |
+|---|---|
+| Status / redirect matrix | all 9 correct: real 404, `/privacy-policy` → `/privacy`, `robots.txt` `text/plain`, `sitemap.xml` `application/xml` |
+| JSON-LD | **identical** after normalising origin; `aggregateRating` correctly absent |
+| Class-name diff, `/privacy` `/terms` `/thank-you` | **1 difference each** — the `next/font` variable class on `<html>` |
+| Class-name diff, `/` | 26 differences, all inside the topic-select subtree (Radix mounts its listbox on open; the PHP shipped it hidden in the HTML) plus the submit button's new `disabled:` classes |
+| Head / meta tags | every PHP tag reproduced. Next additionally emits a full Twitter card (`twitter:image`, `title`, `description`) where the PHP had only `twitter:card` — an addition, not a regression |
+| Enquiry pipeline | 13/13, including the CSV row being **byte-identical** to the existing PHP log row |
+
+**One real bug found and fixed by the meta diff:** Next *replaces* `openGraph`
+rather than deep-merging it, so pages that set `{title, description, url}` were
+silently dropping `og:image`, `og:type`, `og:site_name` and `og:locale` — every
+shared link would have had no preview image, with nothing failing to warn us.
+All pages now go through `lib/seo.ts`.
+
+### Still to do
+
+- **§11.5 screenshots** at the seven boundary widths, **§11.9 no-JS pass**,
+  **§11.10 keyboard spec**, **§11.12 axe + Lighthouse** — none run yet.
+- **Verify the topic select posts `topic` with JavaScript disabled.** Radix
+  renders no submitted control of its own; a real `<select name="topic">` is
+  kept for this. Confirm it rather than assume it.
+- **Step 11: flip all three flags on**, diff LogoWall / CallBar / ChatWidget,
+  flip back. Nothing so far exercises them.
+- Steps 12-13: full sweep and cutover.
+
 ## 2. Content and config
 
 **The entity problem is smaller than it looks.** I grepped every unescaped `<?= $… ?>` in
