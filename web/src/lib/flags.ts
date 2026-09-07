@@ -19,5 +19,5 @@ export const flags = {
   showCallBar: false,
   /** Floating chat button; hands off to WhatsApp. Repositions itself when the
    *  call bar is on. */
-  showChat: false,
+  showChat: true,
 } satisfies Record<string, boolean>;
