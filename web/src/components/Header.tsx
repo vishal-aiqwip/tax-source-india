@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { SiteLink } from "@/components/SiteLink";
 import { site } from "@/lib/config";
 import { homeAnchor, type PageKey, ROUTES, telHref } from "@/lib/urls";
+import Link from "next/link";
 
 /** The four in-page destinations. `strong` marks the visually emphasised one. */
 const NAV: { label: string; href: string; strong?: boolean }[] = [
@@ -33,13 +34,13 @@ export function Header({ page }: { page: PageKey }) {
         href: homeAnchor(item.href, page),
       }))}
       mobilePhone={
-        <a
+        <Link
           href={telHref(site.phoneRaw)}
           aria-label={`Call ${site.phone}`}
           className="flex h-[46px] w-[46px] items-center justify-center rounded-lg border border-line-strong bg-white"
         >
           <Icon name="phone" className="w-[19px] h-[19px] text-brand" />
-        </a>
+        </Link>
       }
     >
       <SiteLink
@@ -81,13 +82,13 @@ export function Header({ page }: { page: PageKey }) {
 
       {/* desktop actions */}
       <div className="hidden items-center gap-4 nav:flex">
-        <a
+        <Link
           href={telHref(site.phoneRaw)}
           className="flex items-center gap-2 text-[15px] font-semibold whitespace-nowrap text-navy hover:text-brand"
         >
           <Icon name="phone" className="w-[17px] h-[17px] text-brand" />
           {site.phone}
-        </a>
+        </Link>
         <SiteLink
           href={homeAnchor("contact", page)}
           className="inline-flex min-h-[46px] items-center gap-2 rounded-lg bg-brand px-5 py-3 text-[15px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-brand-dark"
