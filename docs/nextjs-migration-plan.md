@@ -56,40 +56,84 @@ they are.
 
 ## 1. Scaffold
 
-`web/`, current stable Next.js (App Router, React 19), TypeScript strict, Node 22 LTS.
-**The repo has no `package.json` anywhere** — the README's `npm run css` / `npm run images`
-scripts were never committed. `web/package.json` is the first one; nothing to migrate.
+**Done.** The repo had no `package.json` anywhere — the README's `npm run css` / `npm run
+images` scripts were never committed — so `web/package.json` is the first one.
+
+As actually scaffolded (differs from the original plan; these are the facts to build on):
+
+| | |
+|---|---|
+| **Next 16.3.4**, React 19.2.8, Turbopack | not Next 15 — see the version-16 notes below |
+| **`src/` directory** | so `src/app`, `src/components`, `src/lib` |
+| **Biome 2.4.2**, not ESLint | `bun run lint` / `bun run format` |
+| **Bun 1.2.21** as package manager | `bun add`, `bun run`, `bunx` |
+| **React Compiler** on | `reactCompiler: true` in `next.config.ts` |
+| **shadcn/ui** on Radix, `radix-nova` preset | see §7 |
+| CSS at **`src/styles/globals.css`** | not `src/app/` — shadcn relocated it |
 
 ```
 web/
   package.json  tsconfig.json  next.config.ts  postcss.config.mjs
-  middleware.ts  .env.example  .gitignore
-  app/
-    layout.tsx  globals.css  page.tsx
-    privacy/page.tsx  terms/page.tsx  thank-you/page.tsx
-    not-found.tsx  sitemap.ts  robots.ts
-  components/
-    Shell.tsx  Header.tsx  Footer.tsx  MobileNav.tsx  Icon.tsx
-    sections/   Hero  LogoWall  Audience  Services  WhyUs  Process
-                Testimonials  Faq  Contact  CtaBand  CallBar  ChatWidget
-    contact/    EnquiryForm.tsx  TopicSelect.tsx  Field.tsx
-    seo/JsonLd.tsx
-  lib/
-    content.ts  config.ts  flags.ts  icons.tsx  urls.ts  text.ts
-    enquiry/  schema.ts  actions.ts  store.ts  mailer.ts  spam.ts
+  biome.json  components.json  proxy.ts  .env.example
+  src/
+    styles/globals.css       # @import tailwindcss + shadcn/tailwind.css
+    app/
+      layout.tsx  page.tsx
+      privacy/page.tsx  terms/page.tsx  thank-you/page.tsx
+      not-found.tsx  sitemap.ts  robots.ts
+    components/
+      ui/                    # shadcn: button input select field label textarea separator
+      Shell.tsx  Header.tsx  Footer.tsx  MobileNav.tsx  Icon.tsx
+      sections/   Hero  LogoWall  Audience  Services  WhyUs  Process
+                  Testimonials  Faq  Contact  CtaBand  CallBar  ChatWidget
+      contact/    EnquiryForm.tsx  TopicSelect.tsx
+      seo/JsonLd.tsx
+    lib/
+      utils.ts               # shadcn: re-exports cn
+      content.ts  config.ts  flags.ts  icons.tsx  urls.ts  text.ts
+      enquiry/  schema.ts  actions.ts  store.ts  mailer.ts  spam.ts
   public/images/*        # optimised outputs — same URLs as today
   images-src/*           # sharp originals, never served
   tools/optimise-images.mjs
-  scripts/               # the verification harness (§9)
+  scripts/               # the verification harness (§11)
 ```
 
 Tailwind v4 needs no `tailwind.config.js` and no autoprefixer:
 `postcss.config.mjs` → `{ plugins: { '@tailwindcss/postcss': {} } }`.
 
-Deps: `next`, `react`, `react-dom`, `nodemailer`, `zod`.
-Dev: `typescript`, `@types/*`, `tailwindcss@^4`, `@tailwindcss/postcss@^4`, `eslint`,
-`eslint-config-next`, `sharp`, plus `cheerio` / `@playwright/test` / `pixelmatch` for §9.
-`sharp` stays a **devDependency** — we are not using `next/image` (§8).
+Installed: `next`, `react`, `react-dom`, `radix-ui`, `class-variance-authority`, `cn`,
+`lucide-react`, `tw-animate-css`, `shadcn`.
+Still to add: `nodemailer`, `zod`, and dev `sharp` / `cheerio` / `@playwright/test` /
+`pixelmatch` for §11. `sharp` stays a **devDependency** — we are not using `next/image` (§8).
+
+### Next 16 changes that hit this plan
+
+Next 16 ships its own docs at `web/node_modules/next/dist/docs/` and an `AGENTS.md` telling
+you to read them before writing code. Two changes bite directly:
+
+- **`middleware.ts` → `proxy.ts`**, and the exported function renames `middleware` → `proxy`.
+  The `edge` runtime is not supported there; `proxy` is always `nodejs`. That is *better* for
+  us — the HMAC timing cookie (§7) uses `node:crypto`.
+- **`scroll-behavior: smooth` is no longer overridden during navigation.**
+  [input.css](../php/style/input.css) sets it on `html`, so without a fix every route
+  transition would smooth-scroll instead of jumping. Add **`data-scroll-behavior="smooth"`**
+  to `<html>` in `layout.tsx` to restore the old snappy behaviour. Easy to miss; it only
+  shows up when clicking between `/` and `/privacy`.
+
+Also relevant but not yet load-bearing: async `params` for `icon`/`opengraph-image`, async
+`id` for `sitemap`, and `next/image` default changes (we are not using `next/image`).
+
+### Two fixes already applied to the scaffold
+
+- **`shadcn init` relocated the stylesheet** to `src/styles/globals.css` but left
+  `layout.tsx` importing `./globals.css`, which no longer existed — the build was broken on
+  arrival. The import now points at `@/styles/globals.css`, and `components.json`'s stale
+  `tailwind.css` path was corrected to match. Worth knowing if anyone re-runs `init`.
+- **`src/components/ui/**` is exempt from Biome's linter** (`overrides` in `biome.json`);
+  the formatter still runs. shadcn's `field.tsx` trips `useSemanticElements`,
+  `noDoubleEquals` and `noArrayIndexKey`, all benign. These are vendored files we do not
+  author and that `shadcn add` overwrites, so patching them just defers the noise to the
+  next component added.
 
 ## 2. Content and config
 
@@ -291,8 +335,9 @@ The PHP `form_time` hidden input is trivially forgeable and works anyway — it 
 heuristic, not a security control. The Next-specific problem is **caching**: a timestamp
 baked into a statically-rendered page means the trap never fires.
 
-Mint an HMAC-signed timestamp as an HttpOnly cookie in `middleware.ts` (matcher: HTML
-documents only). Middleware runs on cache hits, so the page stays static; the cookie is set
+Mint an HMAC-signed timestamp as an HttpOnly cookie in `proxy.ts` (Next 16 renamed
+middleware; matcher: HTML
+documents only). It runs on cache hits, so the page stays static; the cookie is set
 by the same response that delivers the HTML, so it works with JS off; and it is
 server-authoritative, so it is strictly better than the original.
 
@@ -369,28 +414,40 @@ redirect('/thank-you');
 The README's concern about vendored **PHPMailer 6.0.7 (2018)** needing a security update
 disappears entirely — Nodemailer is a normal npm dependency.
 
-### The custom `<select>` — reimplement in React
+### The custom `<select>` — shadcn/Radix `Select`
 
-Not Radix, not a native select.
+**Decision changed from the original plan.** The plan argued for hand-porting the ~160-line
+ARIA listbox from `site.js:68-225`; we are using shadcn's `Select` (Radix) instead, along
+with `Input`, `Textarea`, `Button` and `Field`. The tradeoff, stated plainly so nobody is
+surprised later:
 
-A **native select** loses the reason the component exists: you cannot style the option list
-on Windows or Android, which is the audience's primary platform. That is a redesign.
+- **What we keep:** a styleable option list, which is the entire reason the original was
+  hand-rolled — a native `<select>`'s list is OS-drawn and unstylable on Windows and
+  Android, the audience's primary platforms.
+- **What we give up:** byte-level parity of the accessibility tree. Radix uses roving focus
+  where the original used `aria-activedescendant` on the button, portals the listbox, and has
+  its own typeahead timing. The §11.10 keyboard spec therefore becomes a *behavioural*
+  check — open/close, arrow navigation, Escape, typeahead, committed value — not a
+  diff against the PHP DOM.
+- **What it costs:** `radix-ui` plus `class-variance-authority`, `cn` and `lucide-react`, on
+  a page whose entire current JS payload is one 12 kB file. Measure it at step 12; if the
+  contact page regresses on Lighthouse, that is the moment to reconsider.
 
-**Radix** would swap in a *different* accessibility tree — it uses roving focus rather than
-`aria-activedescendant`, portals the content, and has its own typeahead timing, against a
-source that specifies `role="combobox"` on the button, `aria-labelledby` with **two** IDs
-(so it announces the question and the value), and a precise keyboard map. It also pulls ~8
-transitive packages / ~30–40 kB onto a page currently shipping one 12 kB file.
+**shadcn no longer ships the react-hook-form `form` component** — the registry item is an
+empty stub. Its replacement is **`Field`** (`Field`, `FieldLabel`, `FieldError`,
+`FieldDescription`, `FieldSet`, `FieldGroup`), which is form-library-agnostic. That suits us:
+no react-hook-form, no resolver, and it composes directly with `useActionState`. `FieldError`
+replaces the `<p data-error-for="…">` slots.
 
-**And the React version is shorter** — most of `site.js:68-225` is manual DOM bookkeeping
-React does for free. Expect 110–130 lines.
+Still required regardless of the primitive:
 
-Details that need care: `const [enhanced, setEnhanced] = useState(false)` +
-`useEffect(() => setEnhanced(true), [])` reproduces the PHP handover exactly and avoids a
-hydration mismatch; the real `<select name="topic">` stays the submitted control (JS-off
-path); `htmlFor={enhanced ? 'f-topic-button' : 'f-topic'}` replaces the label repoint; port
-the `offsetTop`/`clientHeight` scroll arithmetic verbatim — **do not** substitute
-`scrollIntoView()`, which scrolls the page, which is why the original hand-rolled it.
+- **The real `<select name="topic">` must remain the submitted control** so the form works
+  with JS off (§7 progressive enhancement). Radix renders its own hidden native select —
+  verify it actually posts `topic` with JavaScript disabled rather than assuming it does.
+- `key={state.formKey}` remounting resets the Select to `state.values.topic`, which is the
+  correct restore-after-failure behaviour.
+- The six topic strings must post the **entity-decoded** literal (`Payroll, PF & ESI
+  compliance`), matching the existing CSV.
 
 ## 8. Images
 
@@ -537,7 +594,7 @@ in `web/scripts/`, runnable as one `npm run verify`.
 | 3 | `icons.tsx`, `Icon`, `Shell`, `Header`, `Footer` | §11.3 on header + footer |
 | 4 | Static sections: Hero → Audience → Services → WhyUs → Process → Testimonials → Faq → CtaBand → LogoWall | §11.3 after each |
 | 5 | `Contact` server shell + `Field` | renders identically pre-hydration |
-| 6 | Zod schema, Server Action, store, mailer, middleware | staging submission end-to-end |
+| 6 | Zod schema, Server Action, store, mailer, `proxy.ts` | staging submission end-to-end |
 | 7 | Client islands: `MobileNav`, `TopicSelect`, `EnquiryForm` | **§11.10 keyboard spec** |
 | 8 | privacy, terms, thank-you, not-found | §11.2 per route |
 | 9 | Metadata, viewport, JSON-LD, sitemap, robots | §11.6 + §11.7 |
